@@ -1,0 +1,177 @@
+{% extends "layouts/base.html" %}
+{% load static get_attribute %}
+
+{% block title %}
+{% if page_title %} {{ page_title }} {% else %} Dynamic DataTables {% endif %}
+{% endblock title %}
+
+{% block extrastyle %}
+<style>
+.hide-show-dropdown { max-height: 350px; overflow-y: scroll; }
+.page-size .export-csv-img { width: 35px; cursor: pointer; }
+.export-img { width: 30px; }
+.modal-header { display: block !important; }
+.height { height: 40px !important; }
+.table-row { position: relative; }
+.action-td { position: absolute; left: 50%; right: 50%; bottom: -10px; }
+.table-row:hover .data-td { opacity: 0.1; }
+.table-row:hover .action-td { display: flex !important; gap: 3px !important; }
+</style>
+{% endblock extrastyle %}
+
+{% block content %}
+<div class="content-wrapper">
+
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6"><h1>Dynamic DT</h1></div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item"><a href="{% url 'dynamic_dt' %}">Dynamic DT</a></li>
+          <li class="breadcrumb-item active">
+            <a href="{% url 'model_dt' link %}">{{ link|upper }}</a>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content">
+<div class="container-fluid">
+<div class="card">
+<div class="card-body">
+
+<!-- TOP BAR -->
+<div class="d-flex justify-content-between my-4">
+
+<form class="search">
+  <div class="d-flex align-items-center">
+    <input type="text" name="search" class="form-control mr-2" placeholder="Search">
+    <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+  </div>
+</form>
+
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
+    Hide / Show Column
+  </button>
+  <ul class="dropdown-menu hide-show-dropdown px-3" id="dropdownDefaultCheckbox">
+    {% for field_name in field_names %}
+    <div class="form-check mb-2">
+      <input class="form-check-input"
+             type="checkbox"
+             data-target="{{ field_name.key }}"
+             {% if field_name.value %}checked{% endif %}>
+      <label class="form-check-label">{{ field_name.key }}</label>
+    </div>
+    {% endfor %}
+  </ul>
+</div>
+
+<div class="d-flex">
+  <select onchange="getPageItems(this)" class="form-control">
+    <option value="5" {% if page_items == 5 %}selected{% endif %}>5</option>
+    <option value="10" {% if page_items == 10 %}selected{% endif %}>10</option>
+    <option value="25" {% if page_items == 25 %}selected{% endif %}>25</option>
+    <option value="50" {% if page_items == 50 %}selected{% endif %}>50</option>
+  </select>
+
+  <a class="ml-2" data-toggle="modal" data-target="#exportCSV">
+    <img src="{% static 'img/csv.png' %}" class="export-csv-img">
+  </a>
+
+  {% if request.user.is_authenticated %}
+  <button class="btn btn-primary ml-2" data-toggle="modal" data-target="#addSales">
+    Add
+  </button>
+  {% endif %}
+</div>
+
+</div>
+
+<!-- TABLE -->
+<div class="table-responsive">
+<table class="table">
+<thead>
+<tr>
+  {% for field in db_field_names %}
+  <th id="th_{{ field }}">{{ field }}</th>
+  {% endfor %}
+</tr>
+</thead>
+<tbody>
+
+{% for item in items %}
+<tr class="table-row">
+  {% for field in db_field_names %}
+  <td class="td_{{ field }} data-td">{{ item|getattribute:field }}</td>
+  {% endfor %}
+</tr>
+{% endfor %}
+
+</tbody>
+</table>
+</div>
+
+</div>
+</div>
+</div>
+</section>
+</div>
+{% endblock content %}
+
+{% block extra_scripts %}
+<script>
+const link = "{{ link }}";
+
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll('#dropdownDefaultCheckbox input[type="checkbox"]').forEach(cb => {
+
+    const key = cb.dataset.target;
+
+    cb.addEventListener("change", function () {
+      fetch(`/create-hide-show-items/${link}/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-CSRFToken": "{{ csrf_token }}"
+        },
+        body: JSON.stringify({ key: key, value: this.checked })
+      }).then(() => location.reload());
+    });
+  });
+});
+
+function getPageItems(select) {
+  fetch(`/create-page-items/${link}/`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+      "X-CSRFToken": "{{ csrf_token }}"
+    },
+    body: `items=${select.value}`
+  }).then(() => location.reload());
+}
+</script>
+
+<script>
+document.getElementById("addButton")?.addEventListener("click", function () {
+
+  const fields = {{ db_filters|safe }};
+  const html = `
+    <div class="input-container d-flex mb-2">
+      <select name="key" class="form-control mr-2">
+        ${fields.map(f => `<option value="${f}">${f}</option>`).join("")}
+      </select>
+      <input name="value" class="form-control mr-2">
+      <button type="button" class="btn btn-danger" onclick="this.parentElement.remove()">X</button>
+    </div>
+  `;
+  document.getElementById("inputContainer").insertAdjacentHTML("beforeend", html);
+  document.getElementById("submitButton").style.display = "inline-block";
+});
+</script>
+{% endblock extra_scripts %}

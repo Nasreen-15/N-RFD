@@ -1,0 +1,136 @@
+{% load static %}
+
+<style>
+    .voss-btn {
+        background-color: #6c7a89; /* The grey-blue color from your image */
+        color: white !important;
+        border: 1px solid #4a5561;
+        border-radius: 4px;
+        margin-bottom: 5px;
+        text-align: center;
+        padding: 8px 5px;
+        display: block;
+        width: 100%;
+        font-size: 13px;
+        transition: background 0.3s;
+    }
+    .voss-btn:hover {
+        background-color: #515e6b;
+        text-decoration: none;
+    }
+    .nav-sidebar {
+        padding: 10px;
+    }
+    /* Style for special buttons like Dashboard/Register */
+    .voss-btn-alt {
+        background-color: #5d6d7e !important; 
+    }
+</style>
+
+<ul class="nav nav-pills nav-sidebar flex-column" role="menu">
+    <li class="mb-3">
+        <a href="{% url 'dashboardv3' %}" class="voss-btn voss-btn-alt">
+            <i class="fas fa-tachometer-alt mr-1"></i> Dashboard
+        </a>
+    </li>
+
+    <hr style="border-top: 1px solid #4b545c; width: 100%; margin-top: 0; margin-bottom: 10px;">
+
+    <li>
+        <a href="#" class="voss-btn" data-toggle="modal" data-target="#customerModal">
+            Customer Selection
+        </a>
+    </li>
+
+    <li><a href="#" class="voss-btn">Item Creation</a></li>
+    <li><a href="#" class="voss-btn">Opportunity Creation</a></li>
+    <li><a href="#" class="voss-btn">Feasibility Check List</a></li>
+    <li><a href="#" class="voss-btn">BOM Creation</a></li>
+    <li><a href="#" class="voss-btn">BOP Creation</a></li>
+    <li><a href="#" class="voss-btn">BOC Creation</a></li>
+    <li><a href="#" class="voss-btn">Costing & BC Calculations</a></li>
+    <li><a href="#" class="voss-btn">Blanket Sales Order</a></li>
+    <li><a href="#" class="voss-btn">To-Do List</a></li>
+    <li><a href="#" class="voss-btn">Approve Record</a></li>
+    <li><a href="#" class="voss-btn">Report</a></li>
+    <li><a href="#" class="voss-btn">ERP Data</a></li>
+    <li><a href="#" class="voss-btn">Upload Data</a></li>
+    <li><a href="#" class="voss-btn">User Management</a></li>
+    
+    <li class="mt-4">
+        <a href="{% url 'register' %}" class="voss-btn voss-btn-alt">Register</a>
+    </li>
+    <li>
+        <a href="{% url 'admin:logout' %}" class="voss-btn" style="background-color: #dc3545;">Logout</a>
+    </li>
+</ul>
+
+<div class="modal fade" id="customerModal" tabindex="-1" role="dialog" aria-labelledby="customerModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="border-radius: 5px;">
+            <div class="modal-header" style="background-color: #5d6d7e; color: white; padding: 8px 15px;">
+                <h6 class="modal-title" id="customerModalLabel">
+                    <i class="far fa-calendar-alt mr-2"></i> Select Customer
+                </h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white; opacity: 1;">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            
+            <div style="background-color: #f1f3f5; padding: 5px 15px; border-bottom: 1px solid #dee2e6; font-size: 14px; font-weight: 600; color: #495057;">
+                Customer Information
+            </div>
+
+            <div class="modal-body" style="padding: 20px 30px;">
+                <form>
+                    <div class="form-group row mb-2">
+                        <label class="col-sm-5 col-form-label col-form-label-sm">Customer ID :</label>
+                        <div class="col-sm-7">
+                            <select class="form-control form-control-sm"><option>Select ID</option></select>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-2">
+                        <label class="col-sm-5 col-form-label col-form-label-sm">Customer Code :</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control form-control-sm">
+                        </div>
+                    </div>
+                    <div class="form-group row mb-2">
+                        <label class="col-sm-5 col-form-label col-form-label-sm">Name :</label>
+                        <div class="col-sm-7">
+                            <select class="form-control form-control-sm"><option></option></select>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-2">
+                        <label class="col-sm-5 col-form-label col-form-label-sm">Email :</label>
+                        <div class="col-sm-7">
+                            <select class="form-control form-control-sm"><option></option></select>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-2">
+                        <label class="col-sm-5 col-form-label col-form-label-sm">Contact No :</label>
+                        <div class="col-sm-7">
+                            <select class="form-control form-control-sm"><option></option></select>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-2">
+                        <label class="col-sm-5 col-form-label col-form-label-sm">Location :</label>
+                        <div class="col-sm-7">
+                            <select class="form-control form-control-sm"><option></option></select>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-4">
+                        <label class="col-sm-5 col-form-label col-form-label-sm">Search_Name :</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control form-control-sm">
+                        </div>
+                    </div>
+
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-sm" style="background-color: #5d6d7e; color: white; padding: 4px 25px;">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

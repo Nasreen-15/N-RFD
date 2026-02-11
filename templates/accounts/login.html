@@ -1,0 +1,106 @@
+{% extends 'layouts/auth_base.html' %}
+{% load static %}
+
+{% block title %} User Login {% endblock title %}
+
+{% block bodyclass %} login-page {% endblock bodyclass %}
+
+{% block content %}
+
+<style>
+  body {
+    background-color: #f2f3f5;
+  }
+
+  .rfq-login-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+  }
+
+  .rfq-login-box {
+    width: 520px;
+    background: #ffffff;
+    border: 3px solid #6d6d6d;
+    padding: 35px 40px;
+  }
+
+  .rfq-header {
+    font-size: 26px;
+    font-weight: 700;
+    color: #e6007e;
+    margin-bottom: 6px;
+  }
+
+  .rfq-subtitle {
+    color: #555;
+    margin-bottom: 28px;
+  }
+
+  .form-group label {
+    font-weight: 600;
+  }
+
+  .btn-login {
+    background-color: #5a6f8f;
+    color: #fff;
+    border-radius: 2px;
+  }
+
+  .btn-login:hover {
+    background-color: #4c5f7a;
+    color: #fff;
+  }
+
+  .login-links a {
+    font-size: 14px;
+    color: #6c757d;
+    margin-right: 15px;
+  }
+
+  .login-links a:hover {
+    text-decoration: underline;
+  }
+</style>
+
+<div class="rfq-login-wrapper">
+  <div class="rfq-login-box">
+
+    <div class="rfq-header">Welcome to VOSS!</div>
+    <div class="rfq-subtitle">Please sign-in to your account</div>
+
+    <form method="post">
+      {% csrf_token %}
+
+      {% if form.non_field_errors %}
+        {% for error in form.non_field_errors %}
+          <small class="text-danger d-block mb-2">{{ error }}</small>
+        {% endfor %}
+      {% endif %}
+
+      <div class="form-group">
+        <label>User ID</label>
+        {{ form.username }}
+        <small class="text-danger">{{ form.username.errors }}</small>
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        {{ form.password }}
+        <small class="text-danger">{{ form.password.errors }}</small>
+      </div>
+
+      <div class="login-links mb-3">
+        <a href="{% url 'password_reset' %}">Change Password</a>
+        <a href="{% url 'password_reset' %}">Forgot Password?</a>
+      </div>
+
+      <button type="submit" class="btn btn-login btn-block">
+        Sign in
+      </button>
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,91 @@
+<div class="card-footer p-0">
+
+    <style>
+
+        /* This styles your existing item_table.html to match the VOSS look */
+
+        .voss-table-container table {
+
+            width: 100%;
+
+            margin-bottom: 0;
+
+            font-size: 12px;
+
+            border-collapse: collapse;
+
+        }
+
+        .voss-table-container thead {
+
+            background-color: #000000;
+
+            color: white;
+
+            text-align: center;
+
+        }
+
+        .voss-table-container th {
+
+            padding: 8px;
+
+            border: 1px solid #454d55;
+
+            font-weight: 500;
+
+        }
+
+        .voss-table-container tbody {
+
+            background-color: #d1d8e0; /* The light grey-blue from your image */
+
+            color: #333;
+
+        }
+
+        .voss-table-container td {
+
+            padding: 5px;
+
+            border: 1px solid #adb5bd;
+
+            text-align: center;
+
+        }
+
+    </style>
+
+
+
+    <div class="voss-table-container">
+
+        {% include "item_table.html" %}
+
+    </div>
+
+
+
+    <div class="d-flex justify-content-end p-2 bg-light">
+
+        <nav>
+
+            <ul class="pagination pagination-sm m-0">
+
+                <li class="page-item"><a class="page-link" href="#"><</a></li>
+
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+
+                <li class="page-item"><a class="page-link" href="#">0</a></li>
+
+                <li class="page-item"><a class="page-link" href="#">0</a></li>
+
+                <li class="page-item"><a class="page-link" href="#">></a></li>
+
+            </ul>
+
+        </nav>
+
+    </div>
+
+</div>
