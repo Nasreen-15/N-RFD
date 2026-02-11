@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # [Django AdminLTE](https://app-generator.dev/product/adminlte/django/)
 
 **Open-source Django Starter** crafted on top of **[AdminLTE](https://app-generator.dev/product/adminlte/)**, an open-source `Bootstrap` Design. The product is designed to deliver the best possible user experience with highly customizable feature-rich pages. 
@@ -123,3 +124,6 @@ git add .	        Stages all changes	        Before committing.
 git commit -m "..."	Saves a version	            After finishing a task.
 git push	        Uploads to GitHub	        End of the day.
 new push
+=======
+# N-RFD
+>>>>>>> 38dcb5e7b2e0b1596780435851abb0088304a99d
