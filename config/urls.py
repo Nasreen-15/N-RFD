@@ -22,5 +22,8 @@ urlpatterns = [
     path('', include('apps.dyn_api.urls')),
     path('charts/', include('apps.charts.urls')),
     path("admin/", admin.site.urls),
-    path("", include('admin_adminlte.urls'))
+    path("", include('admin_adminlte.urls')),
+    path("", include("apps.opportunities.urls")), 
+    path("", include("apps.todo.urls")),
+
 ]

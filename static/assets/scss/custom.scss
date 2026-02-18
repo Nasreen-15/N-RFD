@@ -1,5 +1,34 @@
 /*!
-
 Custom SCSS
-
 */
+
+// Scrollable form body (for Opportunity Creation)
+.scrollable-form {
+  max-height: 500px;   // adjust height as needed
+  overflow-y: auto;    // adds vertical scrollbar
+  padding-right: 10px; // space for scrollbar
+}
+
+// Full dashboard layout (for Dashboard page)
+.full-dashboard {
+  min-height: 100vh;   // full viewport height
+  overflow: visible;   // allow charts to expand naturally
+}
+
+// Fixed-width card (optional)
+.fixed-card {
+  width: 800px;        // set card width
+  margin: 0 auto;      // center horizontally
+}
+
+// Two-column form alignment
+.form-row .form-group {
+  margin-bottom: 1rem;
+}
+
+// Card footer buttons alignment
+.card-footer {
+  display: flex;
+  justify-content: flex-end; // align buttons to the right
+  gap: 10px;                 // spacing between buttons
+}

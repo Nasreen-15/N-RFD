@@ -68,6 +68,10 @@ INSTALLED_APPS = [
     # Tooling API-GEN
     'rest_framework',            # Include DRF           # <-- NEW 
     'rest_framework.authtoken',  # Include DRF Auth      # <-- NEW   
+
+    # ✅ Your new app 
+    "apps.opportunities",
+    "apps.todo",
 ]
 
 MIDDLEWARE = [

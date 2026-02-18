@@ -1,0 +1,85 @@
+{% extends "layouts/base.html" %}
+{% block content %}
+<div class="container-fluid mt-4">
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Opportunity Creation</h3>
+        </div>
+        <form method="post">
+            {% csrf_token %}
+            <!-- Scrollable card body -->
+            <div class="card-body scrollable-form">
+                
+                <!-- Row 1 -->
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="custId">Cust ID</label>
+                        <input type="text" class="form-control" id="custId" name="custId">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="supplyLocation">Supply Location</label>
+                        <input type="text" class="form-control" id="supplyLocation" name="supplyLocation">
+                    </div>
+                </div>
+
+                <!-- Row 2 -->
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="segmentNo">Segment No</label>
+                        <input type="text" class="form-control" id="segmentNo" name="segmentNo">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="segmentDesc">Segment Description</label>
+                        <input type="text" class="form-control" id="segmentDesc" name="segmentDesc">
+                    </div>
+                </div>
+
+                <!-- Row 3 -->
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="partName">Part Name</label>
+                        <input type="text" class="form-control" id="partName" name="partName">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="sopDate">SOP Date</label>
+                        <input type="date" class="form-control" id="sopDate" name="sopDate">
+                    </div>
+                </div>
+
+                <!-- Row 4 -->
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="drawingRev">Drawing Revision No</label>
+                        <input type="text" class="form-control" id="drawingRev" name="drawingRev">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="application">Application</label>
+                        <input type="text" class="form-control" id="application" name="application">
+                    </div>
+                </div>
+
+                <!-- Row 5 -->
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="business">Business</label>
+                        <input type="text" class="form-control" id="business" name="business">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="plantLocation">Voss Plant Location</label>
+                        <input type="text" class="form-control" id="plantLocation" name="plantLocation">
+                    </div>
+                </div>
+
+                <!-- Add more rows as needed -->
+            </div>
+
+            <!-- Footer buttons -->
+            <div class="card-footer text-right">
+                <button type="submit" class="btn btn-primary">Request</button>
+                <button type="button" class="btn btn-danger">Delete</button>
+                <button type="button" class="btn btn-success">Complete</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
