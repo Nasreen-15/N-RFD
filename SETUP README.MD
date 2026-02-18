@@ -1,27 +1,23 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>RFD-TOOL Setup Guide</title>
-</head>
-<body>
+## RFD-TOOL Setup Guide
 
-<h2>Step 1: Create the App</h2>
-<pre>
-python manage.py startapp todo
-</pre>
+### Step 1: Create the App
 
-<h2>Step 2: Register the App</h2>
-<p>Open: config/settings.py</p>
-<pre>
+```
+python manage.py startapp todo apps/todo
+
+```
+### Step 2: Register the App - Open: config/settings.py
+
+```
 INSTALLED_APPS = [
     ...
     "apps.todo",
 ]
-</pre>
 
-<h2>Step 3: Define the Model</h2>
-<p>Open: todo/models.py</p>
-<pre>
+```
+### Step 3: Define the Model - Open: todo/models.py
+
+```
 from django.db import models
 
 class Task(models.Model):
@@ -32,47 +28,49 @@ class Task(models.Model):
 
     def __str__(self):
         return self.title
-</pre>
+```
+### Step 4: Run Migrations
 
-<h2>Step 4: Run Migrations</h2>
-<pre>
+```
 python manage.py makemigrations
 python manage.py migrate
-</pre>
 
-<h2>Step 5: Create Views</h2>
-<p>Open: todo/views.py</p>
-<pre>
+```
+### Step 5: Create Views - Open: todo/views.py
+
+```
 from django.shortcuts import render
 
 def todo(request):
     return render(request, "todo.html")
-</pre>
 
-<h2>Step 6: Add URLs</h2>
-<p>Create: todo/urls.py</p>
-<pre>
+```
+
+### Step 6: Add URLs in todo/urls - Create: todo/urls.py if not
+
+```
 from django.urls import path
 from . import views
 
 urlpatterns = [
     path("todo/", views.todo, name="todo"),
 ]
-</pre>
 
-<p>Open: config/urls.py</p>
-<pre>
+```
 
+### Step 7: Add Config URLs - Open: config/urls.py
+
+```
 urlpatterns = [
     .......
     .......
     path("", include("apps.todo.urls")),
 ]
-</pre>
 
-<h2>Step 7: Create Template</h2>
-<p>Create: todo/templates/todo/task_list.html</p>
-<pre>
+```
+### Step 8: Create Template - Create: todo/templates/todo/task_list.html (enter your UI code with must {% extends "layouts/base.html" %} header)
+
+```
 {% extends "layouts/base.html" %}
 {% block content %}
 <div class="container-fluid full-dashboard">
@@ -91,13 +89,12 @@ urlpatterns = [
   </ul>
 </div>
 {% endblock %}
-</pre>
 
-<h2>Step 8: Add Menu Link</h2>
-<p>Open: templates/includes/menu-list.html</p>
-<pre>
+```
+
+### Step 9: Add Menu Link - Open: templates/includes/menu-list.html
+
+```
 <li><a href="{% url 'todo' %}" class="voss-btn">To‑Do List</a></li>
-</pre>
 
-</body>
-</html>
+```
