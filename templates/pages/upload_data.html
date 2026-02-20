@@ -1,0 +1,45 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+
+{% block extrastyle %}
+<link rel="stylesheet" href="{% static 'css/upload.css' %}">
+{% endblock extrastyle %}
+
+{% block content %}
+<div class="container">
+
+    <!-- Main Heading -->
+    <div class="main-heading">Upload Data</div>
+
+    <!-- Select Customer Code -->
+    <div class="row">
+        <label>Select Customer Code</label>
+        <select>
+            <option>ALL</option>
+            <option>CUST001</option>
+            <option>CUST002</option>
+        </select>
+    </div>
+
+    <!-- BOM Part Details - Master -->
+    <div class="section">
+        <div class="section-title">BOM Part Details -Master :</div>
+        <div class="file-row">
+            <label>File Path :</label>
+            <input type="text">
+            <span class="folder">📁</span>
+            <button class="btn">Update</button>
+
+            <div class="link-group">
+                <a>Download Data</a>
+                <a>Download Template</a>
+            </div>
+        </div>
+        <hr class="divider">
+    </div>
+
+    <!-- Repeat your other sections here (BOP Types, BOP Tool Measure, etc.) -->
+
+</div>
+{% endblock content %}
+ 

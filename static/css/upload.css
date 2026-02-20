@@ -1,0 +1,87 @@
+
+    body {
+        font-family: Arial, sans-serif;
+        margin: 25px;
+        font-size: 14px;
+    }
+
+    .container {
+        width: 1000px;
+    }
+
+    .main-heading {
+        font-size: 22px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .row {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-weight: bold;
+        margin-right: 10px;
+    }
+
+    select {
+        width: 250px;
+        height: 28px;
+    }
+
+    .section {
+        margin-top: 20px;
+    }
+
+    .section-title {
+        font-weight: bold;
+        text-decoration: underline;
+        margin-bottom: 10px;
+    }
+
+    .file-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .file-row input {
+        width: 650px;
+        height: 26px;
+    }
+
+    .folder {
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    .btn {
+        background-color: #4e5d78;
+        color: white;
+        border: none;
+        padding: 6px 18px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .link-group {
+        display: flex;
+        flex-direction: column;
+        margin-left: 20px;
+        gap: 4px;
+    }
+
+    .link-group a {
+        color: purple;
+        text-decoration: none;
+        font-size: 13px;
+        cursor: pointer;
+    }
+
+    .divider {
+        margin-top: 15px;
+        border: none;
+        border-top: 2px solid #2c7fb8;
+    }

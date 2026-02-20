@@ -1,0 +1,95 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+
+{% block extrastyle %}
+<link rel="stylesheet" href="{% static 'css/erp.css' %}">
+{% endblock extrastyle %}
+
+{% block content %}
+<div class="container">
+
+    <!-- Main Heading -->
+    <div class="main-heading">ERP Data Page</div>
+    <p>Current date: {{ current_date }}</p>
+
+    <!-- Top ERP Download Section -->
+    <div class="top-section">
+        <div class="erp-box">
+            <h3>ERP Download Options</h3>
+            <button class="btn">Download ALL (based on date range)</button>
+            <button class="btn">Last Modified Date (based on date range)</button>
+            <button class="btn">Last Modified Date (current date)</button>
+        </div>
+
+        <div class="date-section">
+            <div>
+                <label><b>*From Date :</b></label>
+                <input type="date">
+            </div>
+            <div>
+                <label><b>*To Date :</b></label>
+                <input type="date">
+            </div>
+            <div>
+                <label><b>Current Date :</b></label>
+                <input type="text" value="{{ current_date }}" readonly>
+            </div>
+        </div>
+    </div>
+
+    <div class="note">
+        <b>Note * :</b> First two options of ERP download fromdate and todate parameter is mandatory field.
+    </div>
+
+    <!-- Item Creation -->
+    <div class="section">
+        <h4>Item Creation Data :</h4>
+        <div class="file-row">
+            <label>File Path :</label>
+            <input type="text">
+            <span class="folder">📁</span>
+            <button class="small-btn">Download</button>
+        </div>
+        <hr>
+    </div>
+
+    <!-- Opportunity Creation -->
+    <div class="section">
+        <h4>Opportunity Creation Data :</h4>
+        <div class="file-row">
+            <label>File Path :</label>
+            <input type="text">
+            <span class="folder">📁</span>
+            <button class="small-btn">Download</button>
+        </div>
+        <hr>
+    </div>
+
+    <!-- BOM Creation -->
+    <div class="section">
+        <h4>BOM Creation Data :</h4>
+        <div class="file-row">
+            <label>File Path :</label>
+            <input type="text">
+            <span class="folder">📁</span>
+            <button class="small-btn">Header Download</button>
+            <button class="small-btn">Line item Download</button>
+        </div>
+        <hr>
+    </div>
+
+    <!-- BOP Creation -->
+    <div class="section">
+        <h4>BOP Creation Data :</h4>
+        <div class="file-row">
+            <label>File Path :</label>
+            <input type="text">
+            <span class="folder">📁</span>
+            <button class="small-btn">Header Download</button>
+            <button class="small-btn">Line item Download</button>
+        </div>
+        <hr>
+    </div>
+
+</div>
+{% endblock content %}
