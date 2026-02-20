@@ -1,0 +1,182 @@
+
+/* Hide all pages */
+.page{
+    display:none;
+}
+
+/* Show active page */
+.active-page{
+    display:block;
+}
+
+/* ================= ADD PAGE STYLE ================= */
+
+.add-body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    font-size: 14px;
+}
+
+.container {
+    width: 1000px;
+}
+
+/* Main Page Header */
+.main-header {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* Top Tabs */
+.tabs {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.tab {
+    padding: 6px 20px;
+    border-radius: 4px 4px 0 0;
+    background-color: #9db7cf;
+    border: 1px solid #7f9db9;
+    cursor: pointer;
+}
+
+.tab.active {
+    background-color: #4e7aa3;
+    color: white;
+}
+
+/* Blue Divider */
+.divider {
+    border: none;
+    border-top: 3px solid #4e7aa3;
+    margin: 0 0 20px 0;
+}
+
+.section-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.form-row {
+    display: flex;
+    gap: 80px;
+    margin-bottom: 15px;
+}
+
+.field-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+label {
+    width: 100px;
+}
+
+input, select {
+    width: 220px;
+    height: 26px;
+}
+
+.button-row {
+    margin-top: 20px;
+    margin-left: 350px;
+    display: flex;
+    gap: 15px;
+}
+
+.btn {
+    padding: 8px 30px;
+    background-color: #4e5d78;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* ================= UPDATE PAGE STYLE (UNCHANGED) ================= */
+
+.update-body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f2f2f2;
+    margin:0;
+}
+
+.main-heading{
+    font-size: 26px;
+    font-weight: bold;
+    padding: 15px 20px;
+    background-color: white;
+}
+
+.tab-bar{
+    background-color: #e9ecef;
+    padding: 10px 15px 0px 15px;
+    border-bottom: 4px solid #5d8fb3;
+}
+
+.tab-button{
+    padding: 8px 20px;
+    margin-right: 5px;
+    border: 1px solid #5d8fb3;
+    background-color: #c9dff0;
+    cursor: pointer;
+    border-radius: 3px 3px 0 0;
+}
+
+.tab-button.active{
+    background-color: #5d8fb3;
+    color: white;
+}
+
+.update-container{
+    background-color: #f7f7f7;
+    padding: 20px;
+}
+
+.form-row-update{
+    display: flex;
+    gap: 40px;
+    margin-bottom: 15px;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+}
+
+.button-group{
+    margin-top: 10px;
+    margin-left: 300px;
+}
+
+.large-box{
+    margin-top: 20px;
+    width: 90%;
+    height: 250px;
+    border: 1px solid #ccc;
+    background-color: white;
+}
+
+/* ================= DELETE PAGE STYLE (UNCHANGED) ================= */
+
+.delete-container {
+    width: 1000px;
+    padding:20px;
+}
+
+.divider-delete {
+    border: none;
+    border-top: 3px solid #4e7aa3;
+    margin: 0 0 20px 0;
+}

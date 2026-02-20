@@ -1,30 +1,117 @@
 {% extends "layouts/base.html" %}
 {% block content %}
-<div class="container-fluid full-dashboard">
-  <h2>My To‑Do List</h2>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>To Do List</title>
 
-  <!-- Task list -->
-  <ul class="list-group">
-    {% for task in tasks %}
-      <li class="list-group-item {% if task.completed %}list-group-item-success{% endif %}">
-        <strong>{{ task.title }}</strong> - {{ task.description }}
-        {% if task.due_date %}
-          <span class="badge badge-info">Due: {{ task.due_date }}</span>
-        {% endif %}
-      </li>
-    {% empty %}
-      <li class="list-group-item">No tasks yet.</li>
-    {% endfor %}
-  </ul>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
 
-  <!-- Inline form to add a new task -->
-  <div class="mt-4">
-    <h4>Add a New Task</h4>
-    <form method="post">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <button type="submit" class="btn btn-primary">Save Task</button>
-    </form>
-  </div>
+    .row {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    label {
+        width: 120px;
+        font-weight: bold;
+    }
+
+    select, input {
+        width: 220px;
+        height: 26px;
+        margin-right: 20px;
+    }
+
+    .btn-group {
+        margin: 15px 0;
+    }
+
+    .btn {
+        background-color: #4e5d78;
+        color: white;
+        border: none;
+        padding: 6px 18px;
+        margin-right: 8px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+    }
+
+    .btn:hover {
+        opacity: 0.9;
+    }
+
+    .export-btn {
+        background-color: #4e5d78;
+        color: white;
+        border: none;
+        padding: 6px 14px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+</style>
+</head>
+
+<body>
+
+<h2>TO DO LIST</h2>
+
+<!-- Customer ID & Name -->
+<div class="row">
+    <label>Customer ID :</label>
+    <select>
+        <option></option>
+        <option>1001</option>
+        <option>1002</option>
+    </select>
+
+    <label>Customer Name :</label>
+    <input type="text">
 </div>
+
+<!-- Item No -->
+<div class="row">
+    <label>Item No :</label>
+    <select>
+        <option></option>
+        <option>Item 1</option>
+        <option>Item 2</option>
+    </select>
+</div>
+
+<!-- Buttons -->
+<div class="btn-group">
+    <button class="btn">To Do List Simple</button>
+    <button class="btn">To Do List Normal</button>
+    <button class="btn">To Do List Complex</button>
+</div>
+
+<!-- Export Path -->
+<div class="row">
+    <label>ExportFilePath:</label>
+    <input type="text" style="width:400px;">
+</div>
+
+<!-- To-Do Dropdown & Export Button -->
+<div class="row">
+    <label>To-Do List :</label>
+    <select>
+        <option></option>
+        <option>Pending</option>
+        <option>Completed</option>
+    </select>
+
+    <button class="export-btn">Export Pending To-Do Dump</button>
+</div>
+
+</body>
+</html>
+
 {% endblock %}

@@ -1,0 +1,220 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>User Management</h1>
+<!-- Your User Management HTML code here -->
+ <!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>User Management</title>
+
+<script>
+function showPage(pageId){
+    var pages=document.getElementsByClassName("page");
+    for(var i=0;i<pages.length;i++){
+        pages[i].style.display="none";
+    }
+    document.getElementById(pageId).style.display="block";
+}
+
+window.onload=function(){
+    showPage("addPage");
+}
+</script>
+
+</head>
+<body>
+
+<!-- ================= ADD PAGE ================= -->
+
+<div id="addPage" class="page active-page add-body">
+
+<div class="container">
+
+    <div class="main-header">User Management</div>
+
+    <div class="tabs">
+        <div class="tab active" onclick="showPage('addPage')">Add New</div>
+        <div class="tab" onclick="showPage('deletePage')">Delete</div>
+        <div class="tab" onclick="showPage('updatePage')">Update</div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="section-title">Add new user</div>
+    <div class="subtitle">Please enter details here.</div>
+
+    <div class="form-row">
+        <div class="field-group">
+            <label>User Name</label>
+            <input type="text">
+        </div>
+
+        <div class="field-group">
+            <label>Full Name</label>
+            <input type="text">
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="field-group">
+            <label>Designation</label>
+            <select>
+                <option></option>
+                <option>Manager</option>
+                <option>Engineer</option>
+            </select>
+        </div>
+
+        <div class="field-group">
+            <label>Email Id</label>
+            <input type="email">
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="field-group">
+            <label>Is Admin</label>
+            <select>
+                <option></option>
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+        </div>
+
+        <div class="field-group">
+            <label>User Type</label>
+            <select>
+                <option></option>
+                <option>Internal</option>
+                <option>External</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="button-row">
+        <button class="btn">Add</button>
+        <button class="btn">Reset</button>
+    </div>
+
+</div>
+</div>
+
+<!-- ================= DELETE PAGE (UNCHANGED) ================= -->
+
+<div id="deletePage" class="page delete-container">
+
+<div class="main-header">User Management</div>
+
+<div class="tabs">
+    <div class="tab" onclick="showPage('addPage')">Add New</div>
+    <div class="tab active">Delete</div>
+    <div class="tab" onclick="showPage('updatePage')">Update</div>
+</div>
+
+<hr class="divider-delete">
+
+<div class="section-title">Delete User Name</div>
+<div class="subtitle">Please enter details here.</div>
+
+<div class="form-row">
+    <label>User Name</label>
+    <select>
+        <option></option>
+        <option>User1</option>
+        <option>User2</option>
+    </select>
+</div>
+
+<button class="btn">Delete</button>
+
+</div>
+
+<!-- ================= UPDATE PAGE (UNCHANGED) ================= -->
+
+<div id="updatePage" class="page update-body">
+
+<div class="main-heading">User Management</div>
+
+<div class="tab-bar">
+    <button class="tab-button" onclick="showPage('addPage')">Add New</button>
+    <button class="tab-button" onclick="showPage('deletePage')">Delete</button>
+    <button class="tab-button active">Update</button>
+</div>
+
+<div class="update-container">
+
+    <h2>Update user details</h2>
+    <div class="subtitle">Please enter details here.</div>
+
+    <div class="form-row-update">
+        <div class="form-group">
+            <label>User Name</label>
+            <select></select>
+        </div>
+
+        <div class="form-group">
+            <label>Full Name</label>
+            <input type="text">
+        </div>
+    </div>
+
+    <div class="form-row-update">
+        <div class="form-group">
+            <label>Designation</label>
+            <select></select>
+        </div>
+
+        <div class="form-group">
+            <label>Email Id</label>
+            <input type="text">
+        </div>
+    </div>
+
+    <div class="form-row-update">
+        <div class="form-group">
+            <label>Is Admin</label>
+            <select></select>
+        </div>
+
+        <div class="form-group">
+            <label>User Type</label>
+            <select></select>
+        </div>
+    </div>
+
+    <div class="button-group">
+        <button class="btn">Update</button>
+        <button class="btn">Reset</button>
+    </div>
+
+    <hr>
+
+    <div class="form-row-update">
+        <div class="form-group">
+            <label>Access To</label>
+            <select></select>
+        </div>
+
+        <div class="form-group">
+            <label>Access Type</label>
+            <select></select>
+        </div>
+
+        <div class="form-group">
+            <label>Last Modified Date</label>
+            <input type="text" value="13-02-2026 11:10:07 PM">
+        </div>
+
+        <button class="btn">Add</button>
+    </div>
+
+    <div class="large-box"></div>
+
+</div>
+</div>
+
+</body>
+</html>
+
+{% endblock %}
