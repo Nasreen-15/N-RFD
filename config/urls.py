@@ -25,5 +25,6 @@ urlpatterns = [
     path("", include('admin_adminlte.urls')),
     path("", include("apps.opportunities.urls")), 
     path("", include("apps.todo.urls")),
-
+    path("", include("apps.customer_creation.urls")),
+    path("", include("apps.item_creation.urls")),
 ]

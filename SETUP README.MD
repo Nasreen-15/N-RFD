@@ -3,7 +3,7 @@
 ### Step 1: Create the App
 
 ```
-python manage.py startapp todo apps/todo
+python manage.py startapp todo 
 
 ```
 ### Step 2: Register the App - Open: config/settings.py

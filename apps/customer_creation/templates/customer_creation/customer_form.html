@@ -1,0 +1,49 @@
+{% extends "layouts/base.html" %}
+{% block content %}
+<div class="container-fluid full-dashboard">
+  <h2>Customer Creation</h2>
+
+  <div class="card card-primary mt-3">
+    <div class="card-header">
+      <h3 class="card-title">Customer Information</h3>
+    </div>
+
+    <form method="post">
+      {% csrf_token %}
+      <div class="card-body">
+        <!-- Customer ID -->
+        <div class="form-group">
+          <label for="customer_id">Customer ID</label>
+          <select id="customer_id" name="customer_id" class="form-control">
+            <option value="">Select ID</option>
+            {% for id in customer_ids %}
+              <option value="{{ id }}">{{ id }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <!-- Customer Name -->
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" class="form-control" placeholder="Enter customer name">
+        </div>
+
+        <!-- Search Name -->
+        <div class="form-group">
+          <label for="search_name">Search Name</label>
+          <select id="search_name" name="search_name" class="form-control">
+            <option value="">Select Search Name</option>
+            {% for sname in search_names %}
+              <option value="{{ sname }}">{{ sname }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+
+      <div class="card-footer text-right">
+        <button type="submit" class="btn btn-success">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

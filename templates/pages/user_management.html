@@ -10,6 +10,15 @@
 
 <style>
 
+
+.add-body,
+.delete-container,
+.update-body{
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 1100px;
+}
+
 /* Hide all pages */
 .page{
     display:none;
@@ -29,9 +38,6 @@
     font-size: 14px;
 }
 
-.container {
-    width: 1000px;
-}
 
 /* Main Page Header */
 .main-header {
@@ -60,6 +66,11 @@
     color: white;
 }
 
+.button-group{
+    margin-top: 25px;
+    text-align: right;
+}
+
 /* Blue Divider */
 .divider {
     border: none;
@@ -80,8 +91,9 @@
 
 .form-row {
     display: flex;
-    gap: 80px;
-    margin-bottom: 15px;
+    gap: 60px;
+    margin-bottom: 20px;
+    align-items: center;
 }
 
 .field-group {
@@ -91,20 +103,16 @@
 }
 
 label {
-    width: 100px;
+    width: 140px;
+    font-weight: 500;
 }
 
 input, select {
-    width: 220px;
-    height: 26px;
+    width: 250px;
+    height: 32px;
 }
 
-.button-row {
-    margin-top: 20px;
-    margin-left: 350px;
-    display: flex;
-    gap: 15px;
-}
+
 
 .btn {
     padding: 8px 30px;
@@ -166,10 +174,6 @@ input, select {
     flex-direction: column;
 }
 
-.button-group{
-    margin-top: 10px;
-    margin-left: 300px;
-}
 
 .large-box{
     margin-top: 20px;

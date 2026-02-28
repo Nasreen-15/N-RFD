@@ -1,85 +1,364 @@
 {% extends "layouts/base.html" %}
+{% load static %}
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'customer_creation/css/customer_form.css' %}">
+{% endblock %}
+
 {% block content %}
 <div class="container-fluid mt-4">
-    <div class="card card-primary">
-        <div class="card-header">
-            <h3 class="card-title">Opportunity Creation</h3>
-        </div>
-        <form method="post">
-            {% csrf_token %}
-            <!-- Scrollable card body -->
-            <div class="card-body scrollable-form">
-                
-                <!-- Row 1 -->
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="custId">Cust ID</label>
-                        <input type="text" class="form-control" id="custId" name="custId">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="supplyLocation">Supply Location</label>
-                        <input type="text" class="form-control" id="supplyLocation" name="supplyLocation">
-                    </div>
-                </div>
-
-                <!-- Row 2 -->
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="segmentNo">Segment No</label>
-                        <input type="text" class="form-control" id="segmentNo" name="segmentNo">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="segmentDesc">Segment Description</label>
-                        <input type="text" class="form-control" id="segmentDesc" name="segmentDesc">
-                    </div>
-                </div>
-
-                <!-- Row 3 -->
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="partName">Part Name</label>
-                        <input type="text" class="form-control" id="partName" name="partName">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="sopDate">SOP Date</label>
-                        <input type="date" class="form-control" id="sopDate" name="sopDate">
-                    </div>
-                </div>
-
-                <!-- Row 4 -->
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="drawingRev">Drawing Revision No</label>
-                        <input type="text" class="form-control" id="drawingRev" name="drawingRev">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="application">Application</label>
-                        <input type="text" class="form-control" id="application" name="application">
-                    </div>
-                </div>
-
-                <!-- Row 5 -->
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="business">Business</label>
-                        <input type="text" class="form-control" id="business" name="business">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="plantLocation">Voss Plant Location</label>
-                        <input type="text" class="form-control" id="plantLocation" name="plantLocation">
-                    </div>
-                </div>
-
-                <!-- Add more rows as needed -->
-            </div>
-
-            <!-- Footer buttons -->
-            <div class="card-footer text-right">
-                <button type="submit" class="btn btn-primary">Request</button>
-                <button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-success">Complete</button>
-            </div>
-        </form>
+  <div class="card card-primary">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <h3 class="card-title mb-0">Opportunity Creation</h3>
+      <button type="button" class="btn btn-outline-secondary" id="btn-back">Back</button>
     </div>
+
+    <form method="post" novalidate>
+      {% csrf_token %}
+      <div class="card-body scrollable-form p-3">
+        <div class="row gx-3">
+          <!-- LEFT COLUMN -->
+          <div class="col-md-4">
+            <h6 class="mb-2">Opportunity Details</h6>
+
+            
+            <div class="form-group mb-2">
+                <label for="searchOpportunityNo">Search Opportunity No</label>
+                <select id="searchOpportunityNo" name="searchOpportunityNo" class="form-control">
+                    <option value="">Select Opportunity</option>
+                    {% for id in customer_ids %}
+                    <option value="{{ id }}">{{ id }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+
+            <div class="form-group mb-2">
+              <label for="lastEcnNo">Last ECN No</label>
+              <input type="text" class="form-control" id="lastEcnNo" name="lastEcnNo">
+            </div>
+
+
+            <div class="form-group mb-2">
+                <label for="itemNo">Item No / Part Number</label>
+                <select id="itemNo" name="itemNo" class="form-control">
+                    <option value="">Select Item No / Part Number</option>
+                    {% for id in customer_ids %}
+                    <option value="{{ id }}">{{ id }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group mb-2">
+              <label for="projectName">Project Name</label>
+              <input type="text" class="form-control" id="projectName" name="projectName">
+            </div>
+
+            <div class="form-group mb-2">
+              <label for="opportunityReceivedDate">Opportunity Received Date</label>
+              <input type="date" class="form-control" id="opportunityReceivedDate" name="opportunityReceivedDate">
+            </div>
+
+
+            <div class="form-group mb-2">
+                <label for="salespersonCode">Salesperson Code</label>
+                <select id="salespersonCode" name="salespersonCode" class="form-control">
+                    <option value="">Select Salesperson Code</option>
+                    {% for id in customer_ids %}
+                    <option value="{{ id }}">{{ id }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group mb-2">
+              <label for="contactNo">Contact No</label>
+              <input type="text" class="form-control" id="contactNo" name="contactNo">
+            </div>
+
+            <div class="form-group mb-2">
+              <label for="contactName">Contact Name</label>
+              <input type="text" class="form-control" id="contactName" name="contactName">
+            </div>
+
+            <div class="form-group mb-2">
+                <label for="salesCycleCode">Sales Cycle Code</label>
+                <select id="salesCycleCode" name="salesCycleCode" class="form-control">
+                    <option value="">Select Sales Cycle Code</option>
+                    {% for id in customer_ids %}
+                    <option value="{{ id }}">{{ id }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+
+            <div class="form-group mb-2">
+              <label for="creationDate">Creation Date</label>
+              <input type="date" class="form-control" id="creationDate" name="creationDate" value="{{ creation_date|default:'' }}">
+            </div>
+
+            <div class="form-group mb-2">
+                <label for="status">Status</label>
+                <select id="status" name="status" class="form-control">
+                    <option value="">Select Status</option>
+                    {% for id in customer_ids %}
+                    <option value="{{ id }}">{{ id }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group mb-2">
+                <label for="reason">Reason</label>
+                <select id="reason" name="reason" class="form-control">
+                    <option value="">Select Reason</option>
+                    {% for id in customer_ids %}
+                    <option value="{{ id }}">{{ id }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group mb-2">
+              <label for="statusDate">Status Date</label>
+              <input type="date" class="form-control" id="statusDate" name="statusDate">
+            </div>
+          </div>
+
+          <!-- MIDDLE COLUMN -->
+          <div class="col-md-4">
+            <h6 class="mb-2">Product and Plant</h6>
+
+            <div class="form-group mb-2">
+              <label for="custId">Cust ID</label>
+              <input type="text" class="form-control" id="custId" name="custId">
+            </div>
+
+            <div class="form-group mb-2">
+              <label for="supplyLocation">Supply Location</label>
+              <input type="text" class="form-control" id="supplyLocation" name="supplyLocation">
+            </div>
+
+            <div class="form-group mb-2">
+                <label for="segmentNo">Segment No</label>
+                <select id="segmentNo" name="segmentNo" class="form-control">
+                    <option value="">Select Segment No</option>
+                    {% for id in customer_ids %}
+                    <option value="{{ id }}">{{ id }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group mb-2">
+              <label for="segmentDesc">Segment Description</label>
+              <input type="text" class="form-control" id="segmentDesc" name="segmentDesc">
+            </div>
+
+
+            <div class="form-group mb-2">
+              <label for="partName">Part Name</label>
+              <input type="text" class="form-control" id="partName" name="partName">
+            </div>
+
+            <div class="form-group mb-2">
+              <label for="sopDate">SOP Date</label>
+              <input type="date" class="form-control" id="sopDate" name="sopDate">
+            </div>
+
+            <div class="form-group mb-2">
+              <label for="drawingRev">Drawing Revision No</label>
+              <input type="text" class="form-control" id="drawingRev" name="drawingRev">
+            </div>
+
+            <div class="form-group mb-2">
+              <label for="application">Application</label>
+              <input type="text" class="form-control" id="application" name="application">
+            </div>
+
+            <div class="form-group mb-2">
+                <label for="application">Application</label>
+                <select id="application" name="application" class="form-control">
+                    <option value="">Select Application</option>
+                    {% for id in customer_ids %}
+                    <option value="{{ id }}">{{ id }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group mb-2">
+                <label for="business">Business</label>
+                <select id="business" name="business" class="form-control">
+                    <option value="">Select Business</option>
+                    {% for id in customer_ids %}
+                    <option value="{{ id }}">{{ id }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group mb-2">
+                <label for="plantLocation">Voss Plant Location</label>
+                <select id="plantLocation" name="plantLocation" class="form-control">
+                    <option value="">Select Voss Plant Location</option>
+                    {% for id in customer_ids %}
+                    <option value="{{ id }}">{{ id }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+
+            <div class="form-group mb-2">
+              <label for="salesGoaheadDate">Sales Goahead Date</label>
+              <input type="date" class="form-control" id="salesGoaheadDate" name="salesGoaheadDate">
+            </div>
+          </div>
+
+          <!-- RIGHT COLUMN -->
+          <div class="col-md-4">
+            <h6 class="mb-2">Customer and Pricing</h6>
+
+            <div class="form-group mb-2">
+              <label for="customerName">Customer Name</label>
+              <input type="text" class="form-control" id="customerName" name="customerName">
+            </div>
+
+            <div class="form-group mb-2">
+              <label for="estimatedSalesPrice">Estimated Sales Price</label>
+              <input type="number" step="0.01" class="form-control" id="estimatedSalesPrice" name="estimatedSalesPrice" value="0">
+            </div>
+
+            <div class="form-group mb-2">
+              <label for="nominatedPrice">Nominated Price</label>
+              <input type="number" step="0.01" class="form-control" id="nominatedPrice" name="nominatedPrice" value="0">
+            </div>
+
+            <div class="row gx-2">
+              <div class="col-6 form-group mb-2">
+                <label for="annualVolume1">Annual Volume 1</label>
+                <input type="number" class="form-control" id="annualVolume1" name="annualVolume1" value="0">
+              </div>
+              <div class="col-6 form-group mb-2">
+                <label for="annualYear1">Year 1</label>
+                <input type="text" class="form-control" id="annualYear1" name="annualYear1">
+              </div>
+            </div>
+
+            <div class="row gx-2">
+              <div class="col-6 form-group mb-2">
+                <label for="annualVolume2">Annual Volume 2</label>
+                <input type="number" class="form-control" id="annualVolume2" name="annualVolume2" value="0">
+              </div>
+              <div class="col-6 form-group mb-2">
+                <label for="annualYear2">Year 2</label>
+                <input type="text" class="form-control" id="annualYear2" name="annualYear2">
+              </div>
+            </div>
+
+            <div class="row gx-2">
+              <div class="col-6 form-group mb-2">
+                <label for="annualVolume3">Annual Volume 3</label>
+                <input type="number" class="form-control" id="annualVolume3" name="annualVolume3" value="0">
+              </div>
+              <div class="col-6 form-group mb-2">
+                <label for="annualYear3">Year 3</label>
+                <input type="text" class="form-control" id="annualYear3" name="annualYear3">
+              </div>
+            </div>
+
+            <div class="row gx-2">
+              <div class="col-6 form-group mb-2">
+                <label for="annualVolume4">Annual Volume 4</label>
+                <input type="number" class="form-control" id="annualVolume4" name="annualVolume4" value="0">
+              </div>
+              <div class="col-6 form-group mb-2">
+                <label for="annualYear4">Year 4</label>
+                <input type="text" class="form-control" id="annualYear4" name="annualYear4">
+              </div>
+            </div>
+
+            <div class="row gx-2">
+              <div class="col-6 form-group mb-2">
+                <label for="annualVolume5">Annual Volume 5</label>
+                <input type="number" class="form-control" id="annualVolume5" name="annualVolume5" value="0">
+              </div>
+              <div class="col-6 form-group mb-2">
+                <label for="annualYear5">Year 5</label>
+                <input type="text" class="form-control" id="annualYear5" name="annualYear5">
+              </div>
+            </div>
+
+            <div class="form-group mb-2">
+              <label for="estimatedValuePa">Estimated Value (PA)</label>
+              <input type="number" step="0.01" class="form-control" id="estimatedValuePa" name="estimatedValuePa" value="0">
+            </div>
+
+            <div class="form-group mb-2">
+              <label for="euroConversion">EURO Conversion</label>
+              <input type="number" step="0.0001" class="form-control" id="euroConversion" name="euroConversion" value="0.0108">
+            </div>
+
+            <div class="form-group mb-2">
+              <label for="estimatedValueEuro">Estimated Value Euro</label>
+              <input type="number" step="0.01" class="form-control" id="estimatedValueEuro" name="estimatedValueEuro" value="0">
+            </div>
+
+            <div class="form-group mb-2">
+              <label for="lifeCycleYears">Life Cycle in Years</label>
+              <input type="number" class="form-control" id="lifeCycleYears" name="lifeCycleYears" value="0">
+            </div>
+
+            <div class="form-group mb-2">
+              <label for="remarks">Remarks</label>
+              <textarea class="form-control" id="remarks" name="remarks" rows="1"></textarea>
+            </div>
+
+            <div class="form-group mb-2">
+              <label for="quoteStatus">Quote Status</label>
+              <input type="text" class="form-control" id="quoteStatus" name="quoteStatus">
+            </div>
+
+            <div class="form-group mb-2">
+                <label for="quoteStatus">Quote Status</label>
+                <select id="quoteStatus" name="quoteStatus" class="form-control">
+                    <option value="">Select Quote Status</option>
+                    {% for id in customer_ids %}
+                    <option value="{{ id }}">{{ id }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+
+            <div class="form-group mb-2">
+              <label for="categoryType">Category Type</label>
+              <input type="text" class="form-control" id="categoryType" name="categoryType">
+            </div>
+            <div class="form-group mb-2">
+                <label for="categoryType">Category Type</label>
+                <select id="categoryType" name="categoryType" class="form-control">
+                    <option value="">Select Category Type</option>
+                    {% for id in customer_ids %}
+                    <option value="{{ id }}">{{ id }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group mb-2">
+              <label for="lastModifiedDate">Last Modified Date</label>
+              <input type="date" class="form-control" id="lastModifiedDate" name="lastModifiedDate">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-footer text-right">
+        <button type="submit" class="btn btn-primary">Add</button>
+        <button type="button" class="btn btn-warning">Update</button>
+        <button type="button" class="btn btn-info">ECN Request</button>
+        <button type="button" class="btn btn-danger">Delete</button>
+        <button type="button" class="btn btn-success">Complete</button>
+      </div>
+    </form>
+  </div>
 </div>
+
+<script>
+  document.getElementById('btn-back')?.addEventListener('click', function() {
+    window.history.back();
+  });
+</script>
 {% endblock %}

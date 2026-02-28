@@ -1,0 +1,271 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'item_creation/css/item_creation_form.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid mt-4">
+  <div class="card card-primary">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <h3 class="card-title mb-0">Item Creation</h3>
+      <button type="button" class="btn btn-outline-secondary" id="btn-back">Back</button>
+    </div>
+
+
+
+    <form method="post" novalidate>
+      {% csrf_token %}
+      <div class="card-body scrollable-form p-3">
+        <div class="row gx-3">
+          <!-- LEFT COLUMN -->
+          <div class="col-md-4">
+            <div class="form-group mb-2">
+              <label for="lastEcnNo">Last ECN No</label>
+              <input type="text" class="form-control" id="lastEcnNo" name="lastEcnNo">
+            </div>
+
+            <div class="form-group mb-2">
+              <label for="lastEcnNo">Last ECN No</label>
+              <input type="text" class="form-control" id="lastEcnNo" name="lastEcnNo">
+            </div>
+
+            <div class="form-group mb-2">
+              <label for="lastEcnNo">Customer Name</label>
+              <input type="text" class="form-control" id="lastEcnNo" name="lastEcnNo">
+            </div>
+
+            <div class="form-group mb-2">
+                <label for="s_item">Search Item</label>
+                <select id="s_item" name="s_item" class="form-control">
+                    <option value="">Select Item</option>
+                    {% for id in customer_ids %}
+                    <option value="{{ id }}">{{ id }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group mb-2">
+              <label for="no">No</label>
+              <input type="text" class="form-control" id="no" name="no">
+            </div>
+
+            <div class="form-group mb-2">
+                <label for="templatename">Template Name</label>
+                <select id="templatename" name="templatename" class="form-control">
+                    <option value="">Select Template Name</option>
+                    {% for id in customer_ids %}
+                    <option value="{{ id }}">{{ id }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group mb-2">
+              <label for="description">Description</label>
+              <input type="text" class="form-control" id="description" name="description">
+            </div>
+
+            <div class="form-group mb-2">
+                <label for="baseunit">Base Unit Of Measure</label>
+                <select id="baseunit" name="baseunit" class="form-control">
+                    <option value="">Select Base Unit Of Measure</option>
+                    {% for id in customer_ids %}
+                    <option value="{{ id }}">{{ id }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group mb-2">
+              <label for="shelf">Shelf No</label>
+              <input type="number" class="form-control" id="shelf" name="shelf">
+            </div>
+
+            <div class="form-group mb-2">
+                <label for="cell">Cell</label>
+                <select id="cell" name="cell" class="form-control">
+                    <option value="">Select Cell</option>
+                    {% for id in customer_ids %}
+                    <option value="{{ id }}">{{ id }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group mb-2">
+                <label for="cellt">Cell Type</label>
+                <select id="cellt" name="cellt" class="form-control">
+                    <option value="">Select Cell Type</option>
+                    {% for id in customer_ids %}
+                    <option value="{{ id }}">{{ id }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group mb-2">
+                <label for="itemCategoryCode">Item Category Code</label>
+                <select id="itemCategoryCode" name="itemCategoryCode" class="form-control">
+                    <option value="">Select Item Category Code</option>
+                    {% for id in customer_ids %}
+                    <option value="{{ id }}">{{ id }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+          </div>
+
+          <!-- MIDDLE COLUMN -->
+          <div class="col-md-4">
+
+            <div class="form-group mb-2">
+                <label for="status">Status</label>
+                <select id="status" name="status" class="form-control">
+                    <option value="">Select Status</option>
+                    {% for id in customer_ids %}
+                    <option value="{{ id }}">{{ id }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group mb-2">
+              <label for="fixture">Fixture No</label>
+              <input type="text" class="form-control" id="fixture" name="fixture">
+            </div>
+
+            <div class="form-group mb-2">
+              <label for="noofmeet">No Of Meet</label>
+              <input type="text" class="form-control" id="noofmeet" name="noofmeet">
+            </div>
+
+          
+            <div class="form-group mb-2">
+              <label for="noofparts">No Of Parts</label>
+              <input type="text" class="form-control" id="noofparts" name="noofparts">
+            </div>
+
+
+            <div class="form-group mb-2">
+              <label for="custName">Customer Name</label>
+              <input type="text" class="form-control" id="custName" name="custName">
+            </div>
+
+            <div class="form-group mb-2">
+              <label for="revision">Revision No</label>
+              <input type="number" class="form-control" id="revision" name="revision">
+            </div>
+
+            <div class="form-group mb-2">
+              <label for="custVenderCode">Customer Vender Code</label>
+              <input type="text" class="form-control" id="custVenderCode" name="custVenderCode">
+            </div>
+
+            <div class="form-group mb-2">
+                <label for="hsn">HSN/SAC Code</label>
+                <select id="hsn" name="hsn" class="form-control">
+                    <option value="">Select HSN/SAC Code</option>
+                    {% for id in customer_ids %}
+                    <option value="{{ id }}">{{ id }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group mb-2">
+              <label for="costingmethod">Costing Method</label>
+              <input type="text" class="form-control" id="costingmethod" name="costingmethod">
+            </div>
+
+            <div class="form-group mb-2">
+              <label for="inventory">Inventory Posting Group</label>
+              <input type="text" class="form-control" id="inventory" name="inventory">
+            </div>
+
+            <div class="form-group mb-2">
+              <label for="priceprofit">Price Profit Calculation</label>
+              <input type="text" class="form-control" id="priceprofit" name="priceprofit">
+            </div>
+
+            <div class="form-group mb-2">
+              <label for="lastModifiedDate">Last Modified Date</label>
+              <input type="Date" class="form-control" id="lastModifiedDate" name="lastModifiedDate">
+            </div>
+
+          </div>
+
+          <!-- RIGHT COLUMN -->
+          <div class="col-md-4">
+
+            <div class="form-group mb-2">
+              <label for="genpro">Gen Prod Posting Group</label>
+              <input type="text" class="form-control" id="genpro" name="genpro">
+            </div>
+
+            <div class="form-group mb-2">
+              <label for="replenishment">Replenishment System</label>
+              <input type="text" class="form-control" id="replenishment" name="replenishment">
+            </div>
+            
+            <div class="form-group mb-2">
+              <label for="qc">QC Applicable</label>
+              <input type="text" class="form-control" id="qc" name="qc">
+            </div>
+
+            <div class="form-group mb-2">
+              <label for="manu">Manufacturing Policy</label>
+              <input type="text" class="form-control" id="manu" name="manu">
+            </div>
+
+            <div class="form-group mb-2">
+              <label for="assembly">Assembly Policy</label>
+              <input type="text" class="form-control" id="assembly" name="assembly">
+            </div>
+
+            <div class="form-group mb-2">
+              <label for="reordering">Reordering Policy</label>
+              <input type="text" class="form-control" id="reordering" name="reordering">
+            </div>
+
+            <div class="form-group mb-2">
+              <label for="inventoryinclude">Include Inventory</label>
+              <input type="text" class="form-control" id="inventoryinclude" name="inventoryinclude">
+            </div>
+            <div class="form-group mb-2">
+              <label for="gst">GST Credit</label>
+              <input type="text" class="form-control" id="gst" name="gst">
+            </div>
+            <div class="form-group mb-2">
+              <label for="flushing">Flushing Method</label>
+              <input type="text" class="form-control" id="flushing" name="flushing">
+            </div>
+
+             <div class="form-group mb-2">
+              <label for="template">Template Applied</label>
+              <input type="text" class="form-control" id="template" name="template">
+            </div>
+
+             <div class="form-group mb-2">
+              <label for="rounding">Rounding Precision</label>
+              <input type="text" class="form-control" id="rounding" name="rounding">
+            </div>
+
+             <div class="form-group mb-2">
+              <label for="gstgroup">GST Group Code</label>
+              <input type="text" class="form-control" id="gstgroup" name="gstgroup">
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="card-footer text-right">
+        <button type="submit" class="btn btn-primary">Add</button>
+        <button type="button" class="btn btn-warning">Update</button>
+        <button type="button" class="btn btn-info">ECN Request</button>
+        <button type="button" class="btn btn-danger">Delete</button>
+        <button type="button" class="btn btn-success">Email Send</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  document.getElementById('btn-back')?.addEventListener('click', function() {
+    window.history.back();
+  });
+</script>
+{% endblock %}

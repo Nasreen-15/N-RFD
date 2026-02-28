@@ -72,6 +72,8 @@ INSTALLED_APPS = [
     # ✅ Your new app 
     "apps.opportunities",
     "apps.todo",
+    "apps.customer_creation",
+    "apps.item_creation",
 ]
 
 MIDDLEWARE = [
