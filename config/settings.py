@@ -74,6 +74,14 @@ INSTALLED_APPS = [
     "apps.todo",
     "apps.customer_creation",
     "apps.item_creation",
+    "apps.feasibility_form",
+    "apps.BOM",
+    "apps.BOP",
+    "apps.BOC",
+    "apps.CostingBCCal",
+    "apps.BlanketSales",
+    "apps.ApproveRec",
+    "apps.Report",
 ]
 
 MIDDLEWARE = [

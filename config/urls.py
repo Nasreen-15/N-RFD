@@ -27,4 +27,14 @@ urlpatterns = [
     path("", include("apps.todo.urls")),
     path("", include("apps.customer_creation.urls")),
     path("", include("apps.item_creation.urls")),
+    path("", include("apps.feasibility_form.urls")),
+    path("", include("apps.BOM.urls")),
+    path("", include("apps.BOP.urls")),
+    path("", include("apps.BOC.urls")),
+    path("", include("apps.CostingBCCal.urls")),
+    path("", include("apps.BlanketSales.urls")),
+    path("", include("apps.ApproveRec.urls")),
+    path("", include("apps.Report.urls")),
+
 ]
+

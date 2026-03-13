@@ -71,14 +71,14 @@
     <li><a href="{% url 'customer_creation' %}" class="voss-btn">Customer Selection</a></li>
     <li><a href="{% url 'item_creation' %}" class="voss-btn">Item Creation</a></li>
     <li><a href="{% url 'opportunity_creation' %}" class="voss-btn">Opportunity Creation</a></li>
-    <li><a href="#" class="voss-btn" data-toggle="modal" data-target="#feasibilityModal">Feasibility Check List</a></li>
-    <li><a href="#" class="voss-btn">BOM Creation</a></li>
-    <li><a href="#" class="voss-btn" data-toggle="modal" data-target="#bopCreationModal">BOP Creation</a></li>
-    <li><a href="#" class="voss-btn" data-toggle="modal" data-target="#bocModal">BOC Creation</a></li>
-    <li><a href="#" class="voss-btn">Costing & BC Calculations</a></li>
-    <li><a href="#" class="voss-btn">Blanket Sales Order</a></li>
-    <li><a href="#" class="voss-btn">Approve Record</a></li>
-    <li><a href="#" class="voss-btn">Report</a></li>
+    <li><a href="{% url 'feasibility_form' %}" class="voss-btn">Feasibility Form</a></li>
+    <li><a href="{% url 'BOM' %}" class="voss-btn">BOM Creation</a></li>
+    <li><a href="{% url 'BOP' %}" class="voss-btn">BOP Creation</a></li>
+    <li><a href="{% url 'BOC' %}" class="voss-btn">BOC Creation</a></li>
+    <li><a href="{% url 'CostingBCCal' %}" class="voss-btn">Costing & BC Calculations</a></li>
+    <li><a href="{% url 'BlanketSales' %}" class="voss-btn">Blanket Sales Order</a></li>
+    <li><a href="{% url 'ApproveRec' %}" class="voss-btn">Approve Record</a></li>
+    <li><a href="{% url 'Report' %}" class="voss-btn">Report</a></li>
     <li><a href="{% url 'todo' %}" class="voss-btn">To‑Do List</a></li>
     <li><a href="{% url 'erp_data' %}" class="voss-btn">ERP Data</a></li>
     <li><a href="{% url 'upload_data' %}" class="voss-btn">Upload Data</a></li>

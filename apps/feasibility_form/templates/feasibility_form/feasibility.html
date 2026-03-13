@@ -1,0 +1,208 @@
+{% extends "layouts/base.html" %}
+{% block content %}
+<div class="container-fluid full-dashboard">
+  <h2>Feasibility Form</h2>
+
+  <div class="container-fluid mt-4">
+  <div class="card card-primary">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <h3 class="card-title mb-0">Initial Details</h3>
+    </div>
+
+    <form method="post" novalidate>
+      {% csrf_token %}
+      <div class="card-body scrollable-form p-3">
+        <div class="row gx-3">
+          <!-- LEFT COLUMN -->
+          <div class="col-md-4">
+            <div class="form-group mb-2">
+              <label for="lastEcnNo">Last ECN No</label>
+              <input type="text" class="form-control" id="lastEcnNo" name="lastEcnNo">
+            </div>
+          </div>
+
+          <!-- MIDDLE COLUMN -->
+          <div class="col-md-4">
+
+            <div class="form-group mb-2">
+                <label for="status">Status</label>
+                <select id="status" name="status" class="form-control">
+                    <option value="">Select Status</option>
+                    {% for id in customer_ids %}
+                    <option value="{{ id }}">{{ id }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+          </div>  
+
+          <!-- RIGHT COLUMN -->
+          <div class="col-md-4">
+
+            <div class="form-group mb-2">
+              <label for="genpro">Gen Prod Posting Group</label>
+              <input type="text" class="form-control" id="genpro" name="genpro">
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  </div>
+
+
+  <div class="card card-primary mt-3">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <h3 class="card-title">Project Feasibility Information</h3>
+      <button type="button" class="btn btn-outline-secondary" id="btn-back">Back</button>
+    </div>
+
+    <form method="post">
+      {% csrf_token %}
+      <div class="card-body">
+        <!-- Project Details -->
+        <div class="form-group">
+          <label for="feasibility_type">Feasibility Type</label>
+          <select id="feasibility_type" name="feasibility_type" class="form-control">
+            <option value="">Select Type</option>
+            {% for ft in feasibility_types %}
+              <option value="{{ ft }}">{{ ft }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="feasibility_no">Feasibility No</label>
+          <input type="text" id="feasibility_no" name="feasibility_no" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="customer_name">Customer Name</label>
+          <select id="customer_name" name="customer_name" class="form-control">
+            <option value="">Select Customer</option>
+            {% for cname in customer_names %}
+              <option value="{{ cname }}">{{ cname }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="enquiry_no">Enquiry No</label>
+          <input type="text" id="enquiry_no" name="enquiry_no" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="part_name">Part Name</label>
+          <input type="text" id="part_name" name="part_name" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="application">Application</label>
+          <input type="text" id="application" name="application" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="projected_volume">Projected Volume</label>
+          <input type="number" id="projected_volume" name="projected_volume" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="initial_date">Initial Date</label>
+          <input type="date" id="initial_date" name="initial_date" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="updated_on">Updated On</label>
+          <input type="date" id="updated_on" name="updated_on" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="part_no">Part No</label>
+          <input type="text" id="part_no" name="part_no" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="vehicle_model">Vehicle / Model</label>
+          <input type="text" id="vehicle_model" name="vehicle_model" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="daily_peak">Daily Peak Volumes</label>
+          <input type="number" id="daily_peak" name="daily_peak" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="sop_date">Date of SOP</label>
+          <input type="date" id="sop_date" name="sop_date" class="form-control">
+        </div>
+
+        <!-- Checklist Section -->
+        <h5 class="mt-4">Feasibility Checklist</h5>
+
+        <!-- Example Row -->
+        <div class="form-group">
+          <label>I. Availability of Customer Interactive Questionnaire</label>
+          <div class="row">
+            <div class="col-md-3">
+              <select name="questionnaire_status" class="form-control">
+                <option value="">Feasibility</option>
+                <option value="Feasible">Feasible</option>
+                <option value="Not Feasible">Not Feasible</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <select name="questionnaire_responsible" class="form-control">
+                <option value="">Responsible</option>
+                <option value="Marketing">Marketing</option>
+                <option value="PM/PE">PM/PE</option>
+                <option value="Material">Material</option>
+                <option value="Design Quality">Design Quality</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <input type="text" name="questionnaire_comments" class="form-control" placeholder="Comments">
+            </div>
+          </div>
+        </div>
+
+        <!-- Repeat similar blocks for Raw Material and Drawing Details -->
+        {% for item in feasibility_items %}
+        <div class="form-group">
+          <label>{{ item.label }}</label>
+          <div class="row">
+            <div class="col-md-3">
+              <select name="{{ item.name }}_status" class="form-control">
+                <option value="">Feasibility</option>
+                <option value="Feasible">Feasible</option>
+                <option value="Not Feasible">Not Feasible</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <select name="{{ item.name }}_responsible" class="form-control">
+                <option value="">Responsible</option>
+                <option value="Marketing">Marketing</option>
+                <option value="PM/PE">PM/PE</option>
+                <option value="Material">Material</option>
+                <option value="Design Quality">Design Quality</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <input type="text" name="{{ item.name }}_comments" class="form-control" placeholder="Comments">
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      <div class="card-footer text-right">
+        <button type="submit" class="btn btn-success">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  document.getElementById('btn-back')?.addEventListener('click', function() {
+    window.history.back();
+  });
+</script>
+{% endblock %}
