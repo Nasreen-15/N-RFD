@@ -1,10 +1,13 @@
+# models.py
 from django.db import models
 
-class Task(models.Model):
-    title = models.CharField(max_length=200)
-    description = models.TextField(blank=True)
-    due_date = models.DateField(null=True, blank=True)
-    completed = models.BooleanField(default=False)
+class CustomerInfo(models.Model):
+    customer_id = models.CharField(max_length=20, unique=True)
+    name = models.CharField(max_length=100)
+    search_name = models.CharField(max_length=100)
+
+    class Meta:
+        db_table = "tbl_customerinfo"   # <-- exact table name in PostgreSQL
 
     def __str__(self):
-        return self.title
+        return self.customer_id
