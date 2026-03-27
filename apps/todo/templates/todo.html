@@ -9,109 +9,149 @@
 <style>
     body {
         font-family: Arial, sans-serif;
-        margin: 20px;
+        background-color: #f9f9f9;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Page Header */
+    h2 {
+        background-color: #2a6ebb;
+        color: white;
+        padding: 16px 24px;
+        font-size: 22px;
+        margin: 0;
+    }
+
+    /* Form Section */
+    .form-section {
+        background-color: #ffffff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 30px;
+        max-width: 900px;
+        margin: 30px auto;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.1);
     }
 
     .row {
         display: flex;
         align-items: center;
-        margin-bottom: 10px;
+        margin-bottom: 20px;
     }
 
     label {
-        width: 120px;
+        width: 180px;
         font-weight: bold;
+        font-size: 15px;
+        color: #333;
     }
 
     select, input {
-        width: 220px;
-        height: 26px;
-        margin-right: 20px;
+        flex: 1;
+        height: 36px;
+        padding: 6px 10px;
+        font-size: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
     }
 
     .btn-group {
-        margin: 15px 0;
+        margin: 25px 0;
+        display: flex;
+        gap: 15px;
     }
 
     .btn {
-        background-color: #4e5d78;
+        background-color: #2a6ebb;
         color: white;
         border: none;
-        padding: 6px 18px;
-        margin-right: 8px;
-        border-radius: 4px;
+        padding: 10px 24px;
+        border-radius: 5px;
         cursor: pointer;
-        font-size: 14px;
+        font-size: 15px;
+        transition: background-color 0.2s ease;
     }
 
     .btn:hover {
-        opacity: 0.9;
+        background-color: #1f4f8a;
     }
 
     .export-btn {
-        background-color: #4e5d78;
+        background-color: #28a745;
         color: white;
         border: none;
-        padding: 6px 14px;
-        border-radius: 4px;
+        padding: 10px 20px;
+        border-radius: 5px;
         cursor: pointer;
+        font-size: 15px;
+        transition: background-color 0.2s ease;
+    }
+
+    .export-btn:hover {
+        background-color: #218838;
     }
 </style>
 </head>
 
 <body>
 
+<!-- Page Header -->
 <h2>TO DO LIST</h2>
 
-<!-- Customer ID & Name -->
-<div class="row">
-    <label>Customer ID :</label>
-    <select>
-        <option></option>
-        <option>1001</option>
-        <option>1002</option>
-    </select>
+<div class="form-section">
+    <!-- Customer ID -->
+    <div class="row">
+        <label>Customer ID :</label>
+        <select>
+            <option>Select ID</option>
+            <option>1001</option>
+            <option>1002</option>
+        </select>
+    </div>
 
-    <label>Customer Name :</label>
-    <input type="text">
-</div>
+    <!-- Customer Name -->
+    <div class="row">
+        <label>Customer Name :</label>
+        <input type="text" placeholder="Enter customer name">
+    </div>
 
-<!-- Item No -->
-<div class="row">
-    <label>Item No :</label>
-    <select>
-        <option></option>
-        <option>Item 1</option>
-        <option>Item 2</option>
-    </select>
-</div>
+    <!-- Item No -->
+    <div class="row">
+        <label>Item No :</label>
+        <select>
+            <option>Select Item</option>
+            <option>Item 1</option>
+            <option>Item 2</option>
+        </select>
+    </div>
 
-<!-- Buttons -->
-<div class="btn-group">
-    <button class="btn">To Do List Simple</button>
-    <button class="btn">To Do List Normal</button>
-    <button class="btn">To Do List Complex</button>
-</div>
+    <!-- Buttons -->
+    <div class="btn-group">
+        <button class="btn">To Do List Simple</button>
+        <button class="btn">To Do List Normal</button>
+        <button class="btn">To Do List Complex</button>
+    </div>
 
-<!-- Export Path -->
-<div class="row">
-    <label>ExportFilePath:</label>
-    <input type="text" style="width:400px;">
-</div>
+    <!-- Export Path -->
+    <div class="row">
+        <label>Export File Path :</label>
+        <input type="text" placeholder="Enter export path">
+    </div>
 
-<!-- To-Do Dropdown & Export Button -->
-<div class="row">
-    <label>To-Do List :</label>
-    <select>
-        <option></option>
-        <option>Pending</option>
-        <option>Completed</option>
-    </select>
+    <!-- To-Do Dropdown & Export Button -->
+    <div class="row">
+        <label>To-Do List :</label>
+        <select>
+            <option>Select Status</option>
+            <option>Pending</option>
+            <option>Completed</option>
+        </select>
 
-    <button class="export-btn">Export Pending To-Do Dump</button>
+        <button class="export-btn">Export Pending To-Do Dump</button>
+    </div>
 </div>
 
 </body>
 </html>
-
 {% endblock %}
