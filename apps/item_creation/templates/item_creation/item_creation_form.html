@@ -1,7 +1,7 @@
 {% extends "layouts/base.html" %}
 {% load static %}
 {% block extra_head %}
-<link rel="stylesheet" href="{% static 'item_creation/css/item_creation_form.css' %}">
+<link rel="stylesheet" href="{% static 'assets/scss/custom.scss' %}">
 {% endblock %}
 {% block content %}
 <div class="container-fluid mt-4">
@@ -19,8 +19,7 @@
         
            <div class="form-group">
             <label>Customer ID</label>
-            <input type="text" name="customer_id" class="form-control" value="{{ selected_customer_id }}" readonly>
-           </div>
+            <input type="text" name="customer_id" id="customer_id" class="form-control" value="{{ selected_customer_id }}" readonly>           </div>
             
 
             <div class="form-group mb-2">
@@ -42,7 +41,7 @@
                     {% endfor %}
                 </select>
             </div>
-
+            
             <div class="form-group mb-2">
               <label for="no">No</label>
               <input type="text" class="form-control" id="no" name="no">
@@ -61,76 +60,78 @@
               <label for="description">Description</label>
               <input type="text" class="form-control" id="description" name="description">
             </div>
+<div class="form-group mb-2">
+    <label for="base_unit_of_measure">Base Unit of Measure</label>
+    <select id="base_unit_of_measure" name="base_unit_of_measure" class="form-control">
+        <option value="">Select Unit</option>
+        {% for u in uoms %}
+            <option value="{{ u.code }}">{{ u.code }} - {{ u.description }}</option>
+        {% endfor %}
+    </select>
+</div>
 
-            <div class="form-group mb-2">
-                <label for="base_unit_of_measure">Base Unit Of Measure</label>
-                <select id="base_unit_of_measure" name="base_unit_of_measure" class="form-control">
-                    <option value="">Select Base Unit Of Measure</option>
-                    {% for unit in base_units %}
-                    <option value="{{ unit }}">{{ unit }}</option>
-                    {% endfor %}
-                </select>
-            </div>
+<div class="form-group mb-2">
+    <label for="shelf_no">Shelf No</label>
+    <!-- Use text if shelf numbers can include letters/codes -->
+    <input type="text" class="form-control" id="shelf_no" name="shelf_no">
+</div>
 
-            <div class="form-group mb-2">
-              <label for="shelf_no">Shelf No</label>
-              <input type="number" class="form-control" id="shelf_no" name="shelf_no">
-            </div>
+<div class="form-group mb-2">
+    <label for="cell">Cell</label>
+    <select id="cell" name="cell" class="form-control">
+        <option value="">Select Cell</option>
+        {% for c in cells %}
+            <option value="{{ c.code }}">{{ c.code }}</option>
+        {% endfor %}
+    </select>
+</div>
 
-            <div class="form-group mb-2">
-                <label for="cell">Cell</label>
-                <select id="cell" name="cell" class="form-control">
-                    <option value="">Select Cell</option>
-                    {% for cell in cell %}
-                    <option value="{{ cell }}">{{ cell }}</option>
-                    {% endfor %}
-                </select>
-            </div>
+<div class="form-group mb-2">
+    <label for="cell_type">Cell Type</label>
+    <select id="cell_type" name="cell_type" class="form-control">
+        <option value="">Select Cell Type</option>
+        {% for ct in cell_types %}
+            <option value="{{ ct.code }}">{{ ct.code }}</option>
+        {% endfor %}
+    </select>
+</div>
 
-            <div class="form-group mb-2">
-                <label for="cell_type">Cell Type</label>
-                <select id="cell_type" name="cell_type" class="form-control">
-                    <option value="">Select Cell Type</option>
-                    {% for type in cell_types %}
-                    <option value="{{ id }}">{{ id }}</option>
-                    {% endfor %}
-                </select>
-            </div>
+<div class="form-group mb-2">
+    <label for="item_category_code">Item Category Code</label>
+    <select id="item_category_code" name="item_category_code" class="form-control">
+        <option value="">Select Item Category</option>
+        {% for c in item_categories %}
+            <option value="{{ c.code }}">
+                {{ c.code }} - {{ c.description }}
+            </option>
+        {% endfor %}
+    </select>
+</div>
 
-            <div class="form-group mb-2">
-                <label for="item_category_code">Item Category Code</label>
-                <select id="item_category_code" name="item_category_code" class="form-control">
-                    <option value="">Select Item Category Code</option>
-                    {% for id in item_category_codes %}
-                    <option value="{{ code }}">{{ code }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-
-            <div class="form-group mb-2">
-                <label for="product_group_code">Product Group Code</label>
-                <select id="product_group_code" name="product_group_code" class="form-control">
-                    <option value="">Select Product Group Code</option>
-                    {% for id in product_group_codes %}
-                    <option value="{{ code }}">{{ code }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-        </div>
-        
+<div class="form-group mb-2">
+    <label for="product_group_code">Product Group Code</label>
+    <select id="product_group_code" name="product_group_code" class="form-control">
+        <option value="">Select Product Group</option>
+        {% for p in product_groups %}
+            <option value="{{ p.code }}">{{ p.code }}</option>
+        {% endfor %}
+    </select>
+</div>
+</div>
 
           <!-- MIDDLE COLUMN -->
           <div class="col-md-4">
 
-            <div class="form-group mb-2">
-                <label for="status">Status</label>
-                <select id="status" name="status" class="form-control">
-                    <option value="">Select Status</option>
-                    {% for id in statuses %}
-                    <option value="{{ s }}">{{ s }}</option>
-                    {% endfor %}
-                </select>
-            </div>
+<div class="form-group mb-2">
+    <label for="status">Status</label>
+    <select id="status" name="status" class="form-control">
+        <option value="">Select Status</option>
+        <option value="Pending For Approval">Pending For Approval</option>
+        <option value="Approved">Approved</option>
+        <option value="Rejected">Rejected</option>
+        <option value="Completed by Sales">Completed by Sales</option>
+    </select>
+</div>
 
             <div class="form-group mb-2">
               <label for="fixture">Fixture No</label>
@@ -158,15 +159,15 @@
               <input type="text" class="form-control" id="custVenderCode" name="custVenderCode">
             </div>
 
-            <div class="form-group mb-2">
-                <label for="hsn">HSN/SAC Code</label>
-                <select id="hsn" name="hsn" class="form-control">
-                    <option value="">Select HSN/SAC Code</option>
-                    {% for h in hsn_codes %}
-                    <option value="{{ h }}">{{ h }}</option>
-                    {% endfor %}
-                </select>
-            </div>
+<div class="form-group mb-2">
+    <label for="hsn">HSN/SAC Code</label>
+    <select id="hsn" name="hsn" class="form-control">
+        <option value="">Select HSN Code</option>
+        {% for h in hsn_codes %}
+            <option value="{{ h.code }}">{{ h.code }}</option>
+        {% endfor %}
+    </select>
+</div>
 
             <div class="form-group mb-2">
               <label for="costingmethod">Costing Method</label>
@@ -267,28 +268,130 @@
 </div>
 
 <script>
+// 1. Template Data Fetch (Manual Change)
 document.getElementById("templatename").addEventListener("change", function() {
     const template = this.value;
+    if (!template) return;
 
     fetch(`/get_template_data/?template_name=${template}`)
     .then(res => res.json())
     .then(data => {
-        document.getElementById("item_category_code").value = data.item_category_code || "";
-        document.getElementById("costingmethod").value = data.costing_method || "";
-        document.getElementById("inventory").value = data.inventory_posting_group || "";
-        document.getElementById("priceprofit").value = data.price_profit_calculation || "";
-        document.getElementById("genpro").value = data.gen_prod_posting_group || "";
-        document.getElementById("replenishment").value = data.replenishment_system || "";
-        document.getElementById("qc").value = data.qc_applicable || "";
-        document.getElementById("manu").value = data.manufacturing_policy || "";
-        document.getElementById("assembly").value = data.assembly_policy || "";
-        document.getElementById("reordering").value = data.reordering_policy || "";
-        document.getElementById("inventoryinclude").value = data.include_inventory || "";
-        document.getElementById("gst").value = data.gst_credit || "";
-        document.getElementById("flushing").value = data.flushing_method || "";
-        document.getElementById("template_applied").value = data.template_applied || "";
-        document.getElementById("rounding").value = data.rounding_precision || "";
-        document.getElementById("gstgroup").value = data.gst_group_code || "";
+        // Mapping template fields
+        const templateMap = {
+            "item_category_code": data.item_category_code,
+            "costingmethod": data.costing_method,
+            "inventory": data.inventory_posting_group,
+            "priceprofit": data.price_profit_calculation,
+            "genpro": data.gen_prod_posting_group,
+            "replenishment": data.replenishment_system,
+            "qc": data.qc_applicable,
+            "manu": data.manufacturing_policy,
+            "assembly": data.assembly_policy,
+            "reordering": data.reordering_policy,
+            "inventoryinclude": data.include_inventory,
+            "gst": data.gst_credit,
+            "flushing": data.flushing_method,
+            "template_applied": data.template_applied,
+            "rounding": data.rounding_precision,
+            "gstgroup": data.gst_group_code
+        };
+
+        for (const [id, value] of Object.entries(templateMap)) {
+            const el = document.getElementById(id);
+            if (el) el.value = value || "";
+        }
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const sItemEl = document.getElementById("s_item");
+    if (!sItemEl) return;
+
+    sItemEl.addEventListener("change", function () {
+        const itemNo = this.value;
+        const customerIdEl = document.getElementById("customer_id");
+        const customerId = customerIdEl ? customerIdEl.value : "";
+
+        if (!itemNo) return;
+
+        fetch(`/get_item_details/?item_no=${encodeURIComponent(itemNo)}&customer_id=${encodeURIComponent(customerId)}`)
+            .then(res => {
+                if (!res.ok) {
+                    return res.text().then(text => {
+                        throw new Error(`HTTP ${res.status}: ${text}`);
+                    });
+                }
+                return res.json();
+            })
+            .then(data => {
+                console.log("Fetched item details:", data);
+
+                // ✅ FIX DATE FORMAT
+                let formattedDate = data.lastModifiedDate || "";
+                if (formattedDate && formattedDate.includes("-")) {
+                    let parts = formattedDate.split("-");
+                    // if DD-MM-YYYY → convert to YYYY-MM-DD
+                    if (parts[0].length === 2) {
+                        formattedDate = `${parts[2]}-${parts[1]}-${parts[0]}`;
+                    }
+                }
+
+                const fieldMap = {
+                    "no": data.no,
+                    "description": data.description,
+                    "base_unit_of_measure": data.base_unit_of_measure,
+                    "shelf_no": data.shelf_no,
+                    "cell": data.cell,
+                    "cell_type": data.cell_type,
+                    "item_category_code": data.item_category_code,
+                    "product_group_code": data.product_group_code,
+                    "status": data.status,
+                    "fixture": data.fixture,
+                    "noofparts": data.noofparts,
+                    "noofmeet": data.noofmeet,
+                    "revision": data.revision,
+                    "custVenderCode": data.custVenderCode,
+                    "hsn": data.hsn,
+                    "lastModifiedDate": formattedDate
+                };
+
+                for (const [id, value] of Object.entries(fieldMap)) {
+                    const el = document.getElementById(id);
+                    if (!el) continue;
+
+                    if (el.tagName.toLowerCase() === "select") {
+
+                        // 1. Try direct match
+                        el.value = value || "";
+
+                        // 2. If failed → try case-insensitive match
+                        if (el.value === "" && value) {
+                            const targetVal = String(value).trim().toLowerCase();
+                            let matched = false;
+
+                            for (let i = 0; i < el.options.length; i++) {
+                                if (el.options[i].value.trim().toLowerCase() === targetVal) {
+                                    el.selectedIndex = i;
+                                    matched = true;
+                                    break;
+                                }
+                            }
+
+                            // 3. Log warning if no match
+                            if (!matched) {
+                                console.warn(`Dropdown mismatch: Could not find an option for "${value}" in #${id}`);
+                            }
+                        }
+
+                    } else {
+                        // Input / text / date
+                        el.value = value || "";
+                    }
+                }
+            })
+            .catch(err => {
+                console.error("Error fetching item details:", err);
+            });
     });
 });
 </script>
