@@ -1,95 +1,176 @@
 {% extends "layouts/base.html" %}
-{% load static %}
-
-{% block extrastyle %}
-<link rel="stylesheet" href="{% static 'css/erp.css' %}">
-{% endblock extrastyle %}
-
 {% block content %}
-<div class="container">
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ERP Data Page</title>
 
-    <!-- Main Heading -->
-    <div class="main-heading">ERP Data Page</div>
-    <p>Current date: {{ current_date }}</p>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+        margin: 0;
+        padding: 0;
+    }
 
-    <!-- Top ERP Download Section -->
-    <div class="top-section">
-        <div class="erp-box">
-            <h3>ERP Download Options</h3>
-            <button class="btn">Download ALL (based on date range)</button>
-            <button class="btn">Last Modified Date (based on date range)</button>
-            <button class="btn">Last Modified Date (current date)</button>
-        </div>
+    /* Page Header */
+    h2 {
+        background-color: #2a6ebb;
+        color: white;
+        padding: 16px 24px;
+        font-size: 22px;
+        margin: 0;
+    }
 
-        <div class="date-section">
-            <div>
-                <label><b>*From Date :</b></label>
-                <input type="date">
-            </div>
-            <div>
-                <label><b>*To Date :</b></label>
-                <input type="date">
-            </div>
-            <div>
-                <label><b>Current Date :</b></label>
-                <input type="text" value="{{ current_date }}" readonly>
-            </div>
-        </div>
+    /* Form Section */
+    .form-section {
+        background-color: #ffffff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 30px;
+        max-width: 950px;
+        margin: 30px auto;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+
+    .row {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    label {
+        width: 200px;
+        font-weight: bold;
+        font-size: 15px;
+        color: #333;
+    }
+
+    input {
+        flex: 1;
+        height: 36px;
+        padding: 6px 10px;
+        font-size: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .btn-group {
+        margin: 25px 0;
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    .btn {
+        background-color: #2a6ebb;
+        color: white;
+        border: none;
+        padding: 10px 24px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 15px;
+        transition: background-color 0.2s ease;
+    }
+
+    .btn:hover {
+        background-color: #1f4f8a;
+    }
+
+    .green-btn {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 15px;
+        transition: background-color 0.2s ease;
+    }
+
+    .green-btn:hover {
+        background-color: #218838;
+    }
+
+    .note {
+        font-size: 13px;
+        color: #666;
+        margin-top: 10px;
+    }
+
+    .section-title {
+        font-size: 18px;
+        font-weight: bold;
+        margin: 25px 0 15px;
+        color: #2a6ebb;
+    }
+</style>
+</head>
+
+<body>
+
+<!-- Page Header -->
+<h2>ERP Data Page</h2>
+
+<div class="form-section">
+    <!-- ERP Download Options -->
+    <div class="section-title">ERP Download Options</div>
+    <div class="btn-group">
+        <button class="btn">Download ALL (based on date range)</button>
+        <button class="btn">Last Modified Date (based on date range)</button>
+        <button class="btn">Last Modified Date (current date)</button>
     </div>
 
-    <div class="note">
-        <b>Note * :</b> First two options of ERP download fromdate and todate parameter is mandatory field.
+    <div class="row">
+        <label>*From Date:</label>
+        <input type="text" placeholder="mm/dd/yyyy">
+    </div>
+    <div class="row">
+        <label>*To Date:</label>
+        <input type="text" placeholder="mm/dd/yyyy">
+    </div>
+    <div class="row">
+        <label>Current Date:</label>
+        <input type="text" value="27-Mar-26">
+    </div>
+    <div class="note">Note * : First two options of ERP download require From Date and To Date.</div>
+
+    <!-- Item Creation Data -->
+    <div class="section-title">Item Creation Data</div>
+    <div class="row">
+        <label>File Path:</label>
+        <input type="text" placeholder="Enter file path">
+        <button class="green-btn">Download</button>
     </div>
 
-    <!-- Item Creation -->
-    <div class="section">
-        <h4>Item Creation Data :</h4>
-        <div class="file-row">
-            <label>File Path :</label>
-            <input type="text">
-            <span class="folder">📁</span>
-            <button class="small-btn">Download</button>
-        </div>
-        <hr>
+    <!-- Opportunity Creation Data -->
+    <div class="section-title">Opportunity Creation Data</div>
+    <div class="row">
+        <label>File Path:</label>
+        <input type="text" placeholder="Enter file path">
+        <button class="green-btn">Download</button>
     </div>
 
-    <!-- Opportunity Creation -->
-    <div class="section">
-        <h4>Opportunity Creation Data :</h4>
-        <div class="file-row">
-            <label>File Path :</label>
-            <input type="text">
-            <span class="folder">📁</span>
-            <button class="small-btn">Download</button>
-        </div>
-        <hr>
+    <!-- BOM Creation Data -->
+    <div class="section-title">BOM Creation Data</div>
+    <div class="row">
+        <label>File Path:</label>
+        <input type="text" placeholder="Enter file path">
+        <button class="green-btn">Header Download</button>
+        <button class="green-btn">Line Item Download</button>
     </div>
 
-    <!-- BOM Creation -->
-    <div class="section">
-        <h4>BOM Creation Data :</h4>
-        <div class="file-row">
-            <label>File Path :</label>
-            <input type="text">
-            <span class="folder">📁</span>
-            <button class="small-btn">Header Download</button>
-            <button class="small-btn">Line item Download</button>
-        </div>
-        <hr>
+    <!-- BOP Creation Data -->
+    <div class="section-title">BOP Creation Data</div>
+    <div class="row">
+        <label>File Path:</label>
+        <input type="text" placeholder="Enter file path">
+        <button class="green-btn">Header Download</button>
+        <button class="green-btn">Line Item Download</button>
     </div>
-
-    <!-- BOP Creation -->
-    <div class="section">
-        <h4>BOP Creation Data :</h4>
-        <div class="file-row">
-            <label>File Path :</label>
-            <input type="text">
-            <span class="folder">📁</span>
-            <button class="small-btn">Header Download</button>
-            <button class="small-btn">Line item Download</button>
-        </div>
-        <hr>
-    </div>
-
 </div>
-{% endblock content %}
+
+</body>
+</html>
+{% endblock %}
