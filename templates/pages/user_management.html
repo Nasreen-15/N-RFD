@@ -1,108 +1,411 @@
-{% extends "layouts/base.html" %}
+{% extends "base.html" %}
 {% block content %}
-<!DOCTYPE html>
+<h1>User Management</h1>
+<!-- Your User Management HTML code here -->
+ <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>User Management</title>
 
 <style>
-    body { font-family: Arial, sans-serif; background:#f9f9f9; margin:0; padding:0; }
 
-    /* Page Header */
-    h2 { background:#2a6ebb; color:white; padding:16px 24px; font-size:22px; margin:0; }
 
-    /* Tabs */
-    .tabs { display:flex; gap:20px; padding:15px 30px; background:#fff; border-bottom:1px solid #ddd; }
-    .tabs button { font-weight:bold; color:#333; background:none; border:none; cursor:pointer; font-size:15px; }
-    .tabs button.active { color:#2a6ebb; border-bottom:2px solid #2a6ebb; }
-    .tabs button:hover { color:#2a6ebb; }
+.add-body,
+.delete-container,
+.update-body{
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 1100px;
+}
 
-    /* Form Section */
-    .form-section { background:#fff; border:1px solid #ddd; border-radius:8px; padding:30px; max-width:900px; margin:30px auto; box-shadow:0 3px 8px rgba(0,0,0,0.1); }
+/* Hide all pages */
+.page{
+    display:none;
+}
 
-    .row { display:flex; align-items:center; margin-bottom:20px; }
-    label { width:200px; font-weight:bold; font-size:15px; color:#333; }
-    input, select { flex:1; height:36px; padding:6px 10px; font-size:15px; border:1px solid #ccc; border-radius:5px; }
+/* Show active page */
+.active-page{
+    display:block;
+}
 
-    .btn { background:#2a6ebb; color:white; border:none; padding:10px 24px; border-radius:5px; cursor:pointer; font-size:15px; margin-right:10px; }
-    .btn:hover { background:#1f4f8a; }
+/* ================= ADD PAGE STYLE ================= */
 
-    .green-btn { background:#28a745; color:white; border:none; padding:10px 20px; border-radius:5px; cursor:pointer; font-size:15px; }
-    .green-btn:hover { background:#218838; }
+.add-body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    font-size: 14px;
+}
 
-    .red-btn { background:#dc3545; color:white; border:none; padding:10px 24px; border-radius:5px; cursor:pointer; font-size:15px; }
-    .red-btn:hover { background:#b52a37; }
 
-    .section-title { font-size:18px; font-weight:bold; margin:25px 0 15px; color:#2a6ebb; }
+/* Main Page Header */
+.main-header {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* Top Tabs */
+.tabs {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.tab {
+    padding: 6px 20px;
+    border-radius: 4px 4px 0 0;
+    background-color: #9db7cf;
+    border: 1px solid #7f9db9;
+    cursor: pointer;
+}
+
+.tab.active {
+    background-color: #4e7aa3;
+    color: white;
+}
+
+.button-group{
+    margin-top: 25px;
+    text-align: right;
+}
+
+/* Blue Divider */
+.divider {
+    border: none;
+    border-top: 3px solid #4e7aa3;
+    margin: 0 0 20px 0;
+}
+
+.section-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.form-row {
+    display: flex;
+    gap: 60px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.field-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+label {
+    width: 140px;
+    font-weight: 500;
+}
+
+input, select {
+    width: 250px;
+    height: 32px;
+}
+
+
+
+.btn {
+    padding: 8px 30px;
+    background-color: #4e5d78;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* ================= UPDATE PAGE STYLE (UNCHANGED) ================= */
+
+.update-body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f2f2f2;
+    margin:0;
+}
+
+.main-heading{
+    font-size: 26px;
+    font-weight: bold;
+    padding: 15px 20px;
+    background-color: white;
+}
+
+.tab-bar{
+    background-color: #e9ecef;
+    padding: 10px 15px 0px 15px;
+    border-bottom: 4px solid #5d8fb3;
+}
+
+.tab-button{
+    padding: 8px 20px;
+    margin-right: 5px;
+    border: 1px solid #5d8fb3;
+    background-color: #c9dff0;
+    cursor: pointer;
+    border-radius: 3px 3px 0 0;
+}
+
+.tab-button.active{
+    background-color: #5d8fb3;
+    color: white;
+}
+
+.update-container{
+    background-color: #f7f7f7;
+    padding: 20px;
+}
+
+.form-row-update{
+    display: flex;
+    gap: 40px;
+    margin-bottom: 15px;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.large-box{
+    margin-top: 20px;
+    width: 90%;
+    height: 250px;
+    border: 1px solid #ccc;
+    background-color: white;
+}
+
+/* ================= DELETE PAGE STYLE (UNCHANGED) ================= */
+
+.delete-container {
+    width: 1000px;
+    padding:20px;
+}
+
+.divider-delete {
+    border: none;
+    border-top: 3px solid #4e7aa3;
+    margin: 0 0 20px 0;
+}
+
 </style>
 
 <script>
-    function showTab(tabId) {
-        document.querySelectorAll('.form-section').forEach(section => section.style.display = 'none');
-        document.getElementById(tabId).style.display = 'block';
-        document.querySelectorAll('.tabs button').forEach(btn => btn.classList.remove('active'));
-        document.querySelector('[data-tab="'+tabId+'"]').classList.add('active');
+function showPage(pageId){
+    var pages=document.getElementsByClassName("page");
+    for(var i=0;i<pages.length;i++){
+        pages[i].style.display="none";
     }
-</script>
-</head>
+    document.getElementById(pageId).style.display="block";
+}
 
+window.onload=function(){
+    showPage("addPage");
+}
+</script>
+
+</head>
 <body>
 
-<h2>User Management</h2>
+<!-- ================= ADD PAGE ================= -->
 
-<!-- Tabs -->
+<div id="addPage" class="page active-page add-body">
+
+<div class="container">
+
+    <div class="main-header">User Management</div>
+
+    <div class="tabs">
+        <div class="tab active" onclick="showPage('addPage')">Add New</div>
+        <div class="tab" onclick="showPage('deletePage')">Delete</div>
+        <div class="tab" onclick="showPage('updatePage')">Update</div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="section-title">Add new user</div>
+    <div class="subtitle">Please enter details here.</div>
+
+    <div class="form-row">
+        <div class="field-group">
+            <label>User Name</label>
+            <input type="text">
+        </div>
+
+        <div class="field-group">
+            <label>Full Name</label>
+            <input type="text">
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="field-group">
+            <label>Designation</label>
+            <select>
+                <option></option>
+                <option>Manager</option>
+                <option>Engineer</option>
+            </select>
+        </div>
+
+        <div class="field-group">
+            <label>Email Id</label>
+            <input type="email">
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="field-group">
+            <label>Is Admin</label>
+            <select>
+                <option></option>
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+        </div>
+
+        <div class="field-group">
+            <label>User Type</label>
+            <select>
+                <option></option>
+                <option>Internal</option>
+                <option>External</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="button-row">
+        <button class="btn">Add</button>
+        <button class="btn">Reset</button>
+    </div>
+
+</div>
+</div>
+
+<!-- ================= DELETE PAGE (UNCHANGED) ================= -->
+
+<div id="deletePage" class="page delete-container">
+
+<div class="main-header">User Management</div>
+
 <div class="tabs">
-    <button data-tab="add" class="active" onclick="showTab('add')">Add New</button>
-    <button data-tab="delete" onclick="showTab('delete')">Delete</button>
-    <button data-tab="update" onclick="showTab('update')">Update</button>
+    <div class="tab" onclick="showPage('addPage')">Add New</div>
+    <div class="tab active">Delete</div>
+    <div class="tab" onclick="showPage('updatePage')">Update</div>
 </div>
 
-<!-- Add New User -->
-<div id="add" class="form-section" style="display:block;">
-    <div class="section-title">Add New User</div>
-    <div class="row"><label>User Name:</label><input type="text"></div>
-    <div class="row"><label>Full Name:</label><input type="text"></div>
-    <div class="row"><label>Designation:</label><select><option>Select</option></select></div>
-    <div class="row"><label>Email Id:</label><input type="email"></div>
-    <div class="row"><label>Is Admin:</label><select><option>No</option><option>Yes</option></select></div>
-    <div class="row"><label>User Type:</label><select><option>Select</option></select></div>
-    <div class="btn-group">
-        <button class="green-btn">Add</button>
+<hr class="divider-delete">
+
+<div class="section-title">Delete User Name</div>
+<div class="subtitle">Please enter details here.</div>
+
+<div class="form-row">
+    <label>User Name</label>
+    <select>
+        <option></option>
+        <option>User1</option>
+        <option>User2</option>
+    </select>
+</div>
+
+<button class="btn">Delete</button>
+
+</div>
+
+<!-- ================= UPDATE PAGE (UNCHANGED) ================= -->
+
+<div id="updatePage" class="page update-body">
+
+<div class="main-heading">User Management</div>
+
+<div class="tab-bar">
+    <button class="tab-button" onclick="showPage('addPage')">Add New</button>
+    <button class="tab-button" onclick="showPage('deletePage')">Delete</button>
+    <button class="tab-button active">Update</button>
+</div>
+
+<div class="update-container">
+
+    <h2>Update user details</h2>
+    <div class="subtitle">Please enter details here.</div>
+
+    <div class="form-row-update">
+        <div class="form-group">
+            <label>User Name</label>
+            <select></select>
+        </div>
+
+        <div class="form-group">
+            <label>Full Name</label>
+            <input type="text">
+        </div>
+    </div>
+
+    <div class="form-row-update">
+        <div class="form-group">
+            <label>Designation</label>
+            <select></select>
+        </div>
+
+        <div class="form-group">
+            <label>Email Id</label>
+            <input type="text">
+        </div>
+    </div>
+
+    <div class="form-row-update">
+        <div class="form-group">
+            <label>Is Admin</label>
+            <select></select>
+        </div>
+
+        <div class="form-group">
+            <label>User Type</label>
+            <select></select>
+        </div>
+    </div>
+
+    <div class="button-group">
+        <button class="btn">Update</button>
         <button class="btn">Reset</button>
     </div>
-</div>
 
-<!-- Delete User -->
-<div id="delete" class="form-section" style="display:none;">
-    <div class="section-title">Delete User</div>
-    <p>Please enter details here.</p>
-    <div class="row"><label>User Name:</label><select><option>Select User</option></select></div>
-    <button class="red-btn">Delete</button>
-</div>
+    <hr>
 
-<!-- Update User -->
-<div id="update" class="form-section" style="display:none;">
-    <div class="section-title">Update User Details</div>
-    <p>Please enter details here.</p>
-    <div class="row"><label>User Name:</label><input type="text"></div>
-    <div class="row"><label>Full Name:</label><input type="text"></div>
-    <div class="row"><label>Designation:</label><select><option>Select</option></select></div>
-    <div class="row"><label>Email Id:</label><input type="email"></div>
-    <div class="row"><label>Is Admin:</label><select><option>No</option><option>Yes</option></select></div>
-    <div class="row"><label>User Type:</label><select><option>Select</option></select></div>
-    <div class="btn-group">
-        <button class="green-btn">Update</button>
-        <button class="btn">Reset</button>
+    <div class="form-row-update">
+        <div class="form-group">
+            <label>Access To</label>
+            <select></select>
+        </div>
+
+        <div class="form-group">
+            <label>Access Type</label>
+            <select></select>
+        </div>
+
+        <div class="form-group">
+            <label>Last Modified Date</label>
+            <input type="text" value="13-02-2026 11:10:07 PM">
+        </div>
+
+        <button class="btn">Add</button>
     </div>
 
-    <div class="section-title">Access To</div>
-    <div class="row"><label>Access To:</label><select><option>Select</option></select></div>
-    <div class="row"><label>Access Type:</label><select><option>Select</option></select></div>
-    <div class="row"><label>Last Modified Date:</label><input type="text" value="13-02-2026 11:10:07 PM"></div>
-    <button class="green-btn">Add</button>
+    <div class="large-box"></div>
+
+</div>
 </div>
 
 </body>
 </html>
+
+
 {% endblock %}

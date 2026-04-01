@@ -1,150 +1,45 @@
 {% extends "layouts/base.html" %}
+{% load static %}
+
+{% block extrastyle %}
+<link rel="stylesheet" href="{% static 'css/upload.css' %}">
+{% endblock extrastyle %}
+
 {% block content %}
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Upload Data</title>
+<div class="container">
 
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f9f9f9;
-        margin: 0;
-        padding: 0;
-    }
+    <!-- Main Heading -->
+    <div class="main-heading">Upload Data</div>
 
-    /* Page Header */
-    h2 {
-        background-color: #2a6ebb;
-        color: white;
-        padding: 16px 24px;
-        font-size: 22px;
-        margin: 0;
-    }
-
-    /* Form Section */
-    .form-section {
-        background-color: #ffffff;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        padding: 30px;
-        max-width: 900px;
-        margin: 30px auto;
-        box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-    }
-
-    .row {
-        display: flex;
-        align-items: center;
-        margin-bottom: 20px;
-    }
-
-    label {
-        width: 200px;
-        font-weight: bold;
-        font-size: 15px;
-        color: #333;
-    }
-
-    select, input {
-        flex: 1;
-        height: 36px;
-        padding: 6px 10px;
-        font-size: 15px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-    }
-
-    .btn {
-        background-color: #2a6ebb;
-        color: white;
-        border: none;
-        padding: 10px 24px;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 15px;
-        transition: background-color 0.2s ease;
-        margin-left: 10px;
-    }
-
-    .btn:hover {
-        background-color: #1f4f8a;
-    }
-
-    .green-btn {
-        background-color: #28a745;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 15px;
-        transition: background-color 0.2s ease;
-        margin-left: 10px;
-    }
-
-    .green-btn:hover {
-        background-color: #218838;
-    }
-
-    .section-title {
-        font-size: 18px;
-        font-weight: bold;
-        margin: 25px 0 15px;
-        color: #2a6ebb;
-    }
-
-    .link-group {
-        display: flex;
-        gap: 20px;
-        margin-top: 15px;
-    }
-
-    .link-group a {
-        color: #2a6ebb;
-        font-weight: bold;
-        text-decoration: none;
-        font-size: 14px;
-    }
-
-    .link-group a:hover {
-        text-decoration: underline;
-    }
-</style>
-</head>
-
-<body>
-
-<!-- Page Header -->
-<h2>Upload Data</h2>
-
-<div class="form-section">
-    <!-- Customer Code -->
+    <!-- Select Customer Code -->
     <div class="row">
-        <label>Select Customer Code:</label>
+        <label>Select Customer Code</label>
         <select>
             <option>ALL</option>
-            <option>1001</option>
-            <option>1002</option>
+            <option>CUST001</option>
+            <option>CUST002</option>
         </select>
     </div>
 
-    <!-- BOM Part Details -->
-    <div class="section-title">BOM Part Details - Master</div>
-    <div class="row">
-        <label>File Path:</label>
-        <input type="text" placeholder="Enter file path">
-        <button class="green-btn">Update</button>
+    <!-- BOM Part Details - Master -->
+    <div class="section">
+        <div class="section-title">BOM Part Details -Master :</div>
+        <div class="file-row">
+            <label>File Path :</label>
+            <input type="text">
+            <span class="folder">📁</span>
+            <button class="btn">Update</button>
+
+            <div class="link-group">
+                <a>Download Data</a>
+                <a>Download Template</a>
+            </div>
+        </div>
+        <hr class="divider">
     </div>
 
-    <!-- Links -->
-    <div class="link-group">
-        <a href="#">Download Data</a>
-        <a href="#">Download Template</a>
-    </div>
+    <!-- Repeat your other sections here (BOP Types, BOP Tool Measure, etc.) -->
+
 </div>
-
-</body>
-</html>
-{% endblock %}
+{% endblock content %}
+ 
