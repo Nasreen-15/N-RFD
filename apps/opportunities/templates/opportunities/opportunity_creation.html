@@ -23,12 +23,9 @@
             
             <div class="form-group mb-2">
                 <label for="searchOpportunityNo">Search Opportunity No</label>
-                <select id="searchOpportunityNo" name="searchOpportunityNo" class="form-control">
-                    <option value="">Select Opportunity</option>
-                    {% for id in customer_ids %}
-                    <option value="{{ id }}">{{ id }}</option>
-                    {% endfor %}
-                </select>
+                <select id="searchOpportunityNo" class="form-control">
+    <option value="">Select Opportunity</option>
+</select>
             </div>
 
 
@@ -40,12 +37,9 @@
 
             <div class="form-group mb-2">
                 <label for="itemNo">Item No / Part Number</label>
-                <select id="itemNo" name="itemNo" class="form-control">
-                    <option value="">Select Item No / Part Number</option>
-                    {% for id in customer_ids %}
-                    <option value="{{ id }}">{{ id }}</option>
-                    {% endfor %}
-                </select>
+                <select id="itemNo" class="form-control">
+    <option value="">Select Item No</option>
+</select>
             </div>
 
             <div class="form-group mb-2">
@@ -60,14 +54,11 @@
 
 
             <div class="form-group mb-2">
-                <label for="salespersonCode">Salesperson Code</label>
-                <select id="salespersonCode" name="salespersonCode" class="form-control">
-                    <option value="">Select Salesperson Code</option>
-                    {% for id in customer_ids %}
-                    <option value="{{ id }}">{{ id }}</option>
-                    {% endfor %}
-                </select>
-            </div>
+    <label for="salespersonCode">Salesperson Code</label>
+    <select id="salespersonCode" name="salespersonCode" class="form-control">
+        <option value="">Select Salesperson Code</option>
+    </select>
+</div>
 
             <div class="form-group mb-2">
               <label for="contactNo">Contact No</label>
@@ -80,14 +71,11 @@
             </div>
 
             <div class="form-group mb-2">
-                <label for="salesCycleCode">Sales Cycle Code</label>
-                <select id="salesCycleCode" name="salesCycleCode" class="form-control">
-                    <option value="">Select Sales Cycle Code</option>
-                    {% for id in customer_ids %}
-                    <option value="{{ id }}">{{ id }}</option>
-                    {% endfor %}
-                </select>
-            </div>
+    <label for="salesCycleCode">Sales Cycle Code</label>
+    <select id="salesCycleCode" name="salesCycleCode" class="form-control">
+        <option value="">Select Sales Cycle Code</option>
+    </select>
+</div>
 
 
             <div class="form-group mb-2">
@@ -98,20 +86,23 @@
             <div class="form-group mb-2">
                 <label for="status">Status</label>
                 <select id="status" name="status" class="form-control">
-                    <option value="">Select Status</option>
-                    {% for id in customer_ids %}
-                    <option value="{{ id }}">{{ id }}</option>
-                    {% endfor %}
-                </select>
+        <option value="">Select Status</option>
+        <option value="Not Started">Not Started</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Won">Won</option>
+        <option value="Lost">Lost</option>
+    </select>
             </div>
 
             <div class="form-group mb-2">
                 <label for="reason">Reason</label>
                 <select id="reason" name="reason" class="form-control">
                     <option value="">Select Reason</option>
-                    {% for id in customer_ids %}
-                    <option value="{{ id }}">{{ id }}</option>
-                    {% endfor %}
+        <option value="Technical">Technical</option>
+        <option value="Price">Price</option>
+        <option value="Absolute">Absolute</option>
+        <option value="ECN">ECN</option>
+        <option value="Other">Other</option>
                 </select>
             </div>
 
@@ -127,7 +118,8 @@
 
             <div class="form-group mb-2">
               <label for="custId">Cust ID</label>
-              <input type="text" class="form-control" id="custId" name="custId">
+<input type="text" class="form-control" id="custId" name="custId"
+       value="{{ selected_customer_id }}">
             </div>
 
             <div class="form-group mb-2">
@@ -136,14 +128,11 @@
             </div>
 
             <div class="form-group mb-2">
-                <label for="segmentNo">Segment No</label>
-                <select id="segmentNo" name="segmentNo" class="form-control">
-                    <option value="">Select Segment No</option>
-                    {% for id in customer_ids %}
-                    <option value="{{ id }}">{{ id }}</option>
-                    {% endfor %}
-                </select>
-            </div>
+    <label for="segmentNo">Segment No</label>
+    <select id="segmentNo" name="segmentNo" class="form-control">
+        <option value="">Select Segment No</option>
+    </select>
+</div>
 
             <div class="form-group mb-2">
               <label for="segmentDesc">Segment Description</label>
@@ -168,36 +157,35 @@
 
             <div class="form-group mb-2">
               <label for="application">Application</label>
-              <input type="text" class="form-control" id="application" name="application">
-            </div>
-
-            <div class="form-group mb-2">
-                <label for="application">Application</label>
-                <select id="application" name="application" class="form-control">
+              <select id="application" name="application" class="form-control">
                     <option value="">Select Application</option>
-                    {% for id in customer_ids %}
-                    <option value="{{ id }}">{{ id }}</option>
-                    {% endfor %}
+        <option value="SCR">SCR</option>
+        <option value="Pneumatic">Pneumatic</option>
+        <option value="Coolant">Coolant</option>
+        <option value="Fuel">Fuel</option>
+        <option value="Other">Other</option>
                 </select>
             </div>
+
 
             <div class="form-group mb-2">
                 <label for="business">Business</label>
                 <select id="business" name="business" class="form-control">
                     <option value="">Select Business</option>
-                    {% for id in customer_ids %}
-                    <option value="{{ id }}">{{ id }}</option>
-                    {% endfor %}
+        <option value="New">New</option>
+        <option value="Pneumatic">Pneumatic</option>
                 </select>
             </div>
 
             <div class="form-group mb-2">
                 <label for="plantLocation">Voss Plant Location</label>
                 <select id="plantLocation" name="plantLocation" class="form-control">
-                    <option value="">Select Voss Plant Location</option>
-                    {% for id in customer_ids %}
-                    <option value="{{ id }}">{{ id }}</option>
-                    {% endfor %}
+                    <option value="">Select VOSS Plant Location</option>
+        <option value="Pune-1">Pune-1</option>
+        <option value="Pune-2">Pune-2</option>
+        <option value="Chennai">Chennai</option>
+        <option value="UTK">UTK</option>
+        <option value="Unit-3">Unit-3</option>
                 </select>
             </div>
 
@@ -213,9 +201,10 @@
             <h6 class="mb-2">Customer and Pricing</h6>
 
             <div class="form-group mb-2">
-              <label for="customerName">Customer Name</label>
-              <input type="text" class="form-control" id="customerName" name="customerName">
-            </div>
+              <label for="customer_name">Customer Name</label>
+<input type="text" class="form-control" id="customer_name" name="customer_name"
+       value="{{ selected_customer_name }}">
+                  </div>
 
             <div class="form-group mb-2">
               <label for="estimatedSalesPrice">Estimated Sales Price</label>
@@ -307,33 +296,27 @@
               <textarea class="form-control" id="remarks" name="remarks" rows="1"></textarea>
             </div>
 
-            <div class="form-group mb-2">
-              <label for="quoteStatus">Quote Status</label>
-              <input type="text" class="form-control" id="quoteStatus" name="quoteStatus">
-            </div>
 
             <div class="form-group mb-2">
                 <label for="quoteStatus">Quote Status</label>
                 <select id="quoteStatus" name="quoteStatus" class="form-control">
                     <option value="">Select Quote Status</option>
-                    {% for id in customer_ids %}
-                    <option value="{{ id }}">{{ id }}</option>
-                    {% endfor %}
+        <option value="Sent">Sent</option>
+        <option value="Not Sent">Not Sent</option>
                 </select>
             </div>
             
 
-            <div class="form-group mb-2">
-              <label for="categoryType">Category Type</label>
-              <input type="text" class="form-control" id="categoryType" name="categoryType">
-            </div>
+          
             <div class="form-group mb-2">
                 <label for="categoryType">Category Type</label>
                 <select id="categoryType" name="categoryType" class="form-control">
-                    <option value="">Select Category Type</option>
-                    {% for id in customer_ids %}
-                    <option value="{{ id }}">{{ id }}</option>
-                    {% endfor %}
+                    <option value="">Select Quote Status</option>
+        <option value="NBO A">NBO A</option>
+        <option value="NBO B1">NBO B1</option>
+        <option value="NBO B2">NBO B2</option>
+        <option value="NBO C">NBO C</option>
+        <option value="NBO">NBO</option>
                 </select>
             </div>
 
@@ -357,8 +340,213 @@
 </div>
 
 <script>
-  document.getElementById('btn-back')?.addEventListener('click', function() {
+
+// 🔙 Back button
+document.getElementById('btn-back')?.addEventListener('click', function() {
     window.history.back();
-  });
+});
+
+function setDropdownValue(id, value) {
+    const el = document.getElementById(id);
+    if (!el || !value) return;
+
+    let exists = [...el.options].some(opt => opt.value == value);
+
+    if (!exists) {
+        let opt = new Option(value, value);
+        el.add(opt);
+    }
+
+    el.value = value;
+}
+
+function formatDate(dateStr) {
+    if (!dateStr) return "";
+
+    // already correct
+    if (/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) return dateStr;
+
+    const months = {
+        Jan: "01", Feb: "02", Mar: "03", Apr: "04",
+        May: "05", Jun: "06", Jul: "07", Aug: "08",
+        Sep: "09", Oct: "10", Nov: "11", Dec: "12"
+    };
+
+    try {
+        // 03-May-24
+        if (dateStr.includes("-") && isNaN(dateStr.split("-")[1])) {
+            let [day, mon, year] = dateStr.split("-");
+            if (!months[mon]) return "";
+            if (year.length === 2) year = "20" + year;
+            return `${year}-${months[mon]}-${day.padStart(2, "0")}`;
+        }
+
+        // 22-05-2024
+        if (/^\d{2}-\d{2}-\d{4}$/.test(dateStr)) {
+            let [day, month, year] = dateStr.split("-");
+            return `${year}-${month}-${day}`;
+        }
+
+        let d = new Date(dateStr);
+        if (!isNaN(d)) return d.toISOString().split("T")[0];
+
+    } catch (e) {
+        console.error("Date error:", dateStr);
+    }
+
+    return "";
+}
+
+const fill = (id, val) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    if (el.type === "date") {
+        el.value = formatDate(val);   // ✅ FIXED
+    } else {
+        el.value = (val === null || val === undefined) ? "" : val;
+    }
+};
+
+// 📌 3. Load Opportunity List
+document.getElementById("searchOpportunityNo").addEventListener("focus", function () {
+    const customerId = "{{ selected_customer_id }}";
+
+    fetch(`/get_item_numbers/?customer_id=${customerId}`)
+        .then(res => res.json())
+        .then(data => {
+            let dropdown = document.getElementById("searchOpportunityNo");
+            dropdown.innerHTML = '<option value="">Select Opportunity</option>';
+
+            data.data.forEach(no => {
+                let opt = document.createElement("option");
+                opt.value = no;
+                opt.text = no;
+                dropdown.appendChild(opt);
+            });
+        })
+        .catch(err => console.error("Error loading dropdown:", err));
+});
+
+
+// 📌 4. Autofill
+document.getElementById("searchOpportunityNo").addEventListener("change", function () {
+
+    const selectedItemNo = this.value.trim();
+    if (!selectedItemNo) return;
+
+    let itemField = document.getElementById("itemNo");
+
+    if (itemField) {
+        if (itemField.tagName === "SELECT") {
+            let opt = document.createElement("option");
+            opt.value = selectedItemNo;
+            opt.text = selectedItemNo;
+            itemField.appendChild(opt);
+        }
+        itemField.value = selectedItemNo;
+    }
+
+    console.log("Fetching details for:", selectedItemNo);
+
+    fetch(`/get_opportunity_details/?item_no=${selectedItemNo}`)
+        .then(res => res.json())
+        .then(result => {
+           
+           if (result.status === "success") {
+                const d = result.data;
+                console.log(result.data);
+
+                setDropdownValue("salespersonCode", d.salesperson_code);
+                setDropdownValue("salesCycleCode", d.sales_cycle_code);
+                setDropdownValue("segmentNo", d.segment_no);
+
+
+                fill("lastEcnNo", d.last_ecn_no);
+                fill("projectName", d.part_name);
+                fill("opportunityReceivedDate", d.opp_received_date);
+                fill("contactName", d.contact_name);
+                
+                fill("creationDate", d.creation_date);
+                fill("status", d.status);
+                fill("reason", d.reason);
+                fill("statusDate", d.status_date);
+
+                fill("nominatedPrice", d.est_price); 
+                fill("estimatedValuePa", d.est_val); 
+                fill("quoteStatus", d.quote_status);
+                fill("custId", d.customer_id);
+               
+                fill("segmentDesc", d.segment_desc);
+                fill("partName", d.part_name);
+                fill("sopDate", d.sop_date);
+                fill("drawingRev", d.drawing_rev);
+                fill("application", d.application);
+                fill("business", d.business);
+                fill("plantLocation", d.plant_loc);
+                fill("salesGoaheadDate", d.sales_goahead);
+                fill("customer_name", d.customer_name_db);
+                fill("estimatedSalesPrice", d.est_price);
+
+                fill("annualVolume1", d.vol1); fill("annualYear1", d.year1);
+                fill("annualVolume2", d.vol2); fill("annualYear2", d.year2);
+                fill("annualVolume3", d.vol3); fill("annualYear3", d.year3);
+                fill("annualVolume4", d.vol4); fill("annualYear4", d.year4);
+                fill("annualVolume5", d.vol5); fill("annualYear5", d.year5);
+
+                fill("euroConversion", d.euro_conv);
+                fill("lifeCycleYears", d.life_cycle);
+                fill("remarks", d.remarks);
+                fill("categoryType", d.cat_type);
+                fill("lastModifiedDate", d.modified_date);
+
+                fetch(`/get_item_numbers/?customer_id=${d.customer_id}`)
+                .then(res => res.json())
+                .then(data => {
+                    fill("supplyLocation", data.city);
+                    fill("contactNo", data.contact); // optional overwrite
+                });
+
+                console.log("✅ Autofill successful");
+            }
+        })
+        .catch(err => alert("Error: " + err.message));
+});
+
+
+// 📌 Dropdowns
+document.getElementById("salespersonCode").addEventListener("focus", function () {
+    fetch("/get_salespersons/")
+        .then(res => res.json())
+        .then(data => {
+            this.innerHTML = '<option value="">Select Salesperson</option>';
+            data.data.forEach(item => {
+                this.add(new Option(item.code + " - " + item.name, item.code));
+            });
+        });
+});
+
+document.getElementById("salesCycleCode").addEventListener("focus", function () {
+    fetch("/get_sales_cycles/")
+        .then(res => res.json())
+        .then(data => {
+            this.innerHTML = '<option value="">Select Sales Cycle</option>';
+            data.data.forEach(item => {
+                this.add(new Option(`${item.code} - ${item.description}`, item.code));
+            });
+        });
+});
+
+document.getElementById("segmentNo").addEventListener("focus", function () {
+    fetch("/get_segments/")
+        .then(res => res.json())
+        .then(data => {
+            this.innerHTML = '<option value="">Select Segment</option>';
+            data.data.forEach(item => {
+                this.add(new Option(item.no + " - " + item.description, item.no));
+            });
+        });
+});
+
 </script>
 {% endblock %}
