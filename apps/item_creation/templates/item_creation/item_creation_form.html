@@ -263,11 +263,17 @@
         <button type="button" class="btn btn-danger">Delete</button>
         <button type="button" class="btn btn-success">Email Send</button>
       </div>
+      <a href="/opportunity_creation/?customer_id={{ selected_customer_id }}&name={{ selected_name }}" class="btn btn-primary">
+    Go to Opportunity
+</a>
     </form>
   </div>
 </div>
 
 <script>
+document.getElementById('btn-back')?.addEventListener('click', function() {
+    window.history.back();
+});
 // 1. Template Data Fetch (Manual Change)
 document.getElementById("templatename").addEventListener("change", function() {
     const template = this.value;
