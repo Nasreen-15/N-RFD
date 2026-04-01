@@ -37,5 +37,8 @@ class Migration(migrations.Migration):
                 'managed': False,
             },
         ),
-        
+        migrations.AlterModelOptions(
+            name='itemcard',
+            options={'managed': False},
+        ),
     ]
