@@ -47,6 +47,9 @@
   </div>
 </div>
 <script>
+  document.getElementById('btn-back')?.addEventListener('click', function() {
+    window.history.back();
+  });
 console.log("Script loaded");
 document.addEventListener("DOMContentLoaded", function() {
     const customerSelect = document.getElementById("customer_id");
